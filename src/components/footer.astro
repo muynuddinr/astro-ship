@@ -1,0 +1,63 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-white text-gray-800 py-12">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Company Info -->
+            <div class="col-span-1">
+                <h3 class="text-xl font-bold mb-4">Marine Ship Industries</h3>
+                <p class="text-gray-600 mb-4">Leading the way in maritime excellence since 1985</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-600 hover:text-gray-900"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-gray-600 hover:text-gray-900"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+
+            <!-- Services -->
+            <div class="col-span-1">
+                <h4 class="text-lg font-semibold mb-4">Our Services</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900">Ship Building</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900">Ship Repair</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900">Maritime Consulting</a></li>
+                    <li><a href="#" class="text-gray-600 hover:text-gray-900">Naval Architecture</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-span-1">
+                <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                <ul class="space-y-2 text-gray-600">
+                    <li>123 Harbor Drive</li>
+                    <li>Port City, PC 12345</li>
+                    <li>Phone: (555) 123-4567</li>
+                    <li>Email: info@marineshipindustries.com</li>
+                </ul>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="col-span-1">
+                <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                <p class="text-gray-600 mb-4">Subscribe to our newsletter for industry updates</p>
+                <form class="flex flex-col space-y-2">
+                    <input 
+                        type="email" 
+                        placeholder="Enter your email" 
+                        class="px-4 py-2 bg-gray-100 text-gray-800 rounded"
+                    >
+                    <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-white">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
+            <p>&copy; {currentYear} Marine Ship Industries. All rights reserved.</p>
+        </div>
+    </div>
+</footer>

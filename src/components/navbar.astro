@@ -1,0 +1,364 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<header class="font-satoshi">
+    <!-- Notification Bar -->
+    <div id="notification-bar" class="bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row items-center justify-between text-white">
+                <div class="flex items-center w-full sm:w-auto justify-center sm:justify-start">
+                    <span class="flex h-4 w-4 relative mr-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-4 w-4 bg-white"></span>
+                    </span>
+                    <p class="font-medium text-sm">
+                        <span class="block sm:inline">✨ New: Introducing AI-Powered Fleet Management</span>
+                        <a href="/ai-fleet" class="group block sm:inline-flex items-center mt-1 sm:mt-0 sm:ml-3 text-white">
+                            Learn more
+                            <svg class="ml-1.5 w-4 h-4 transform transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </p>
+                </div>
+                <button id="notification-dismiss" class="hover:opacity-75 transition-opacity mt-2 sm:mt-0">
+                    <span class="sr-only">Dismiss</span>
+                    <svg class="h-4 w-4 sm:h-5 sm:w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Enhanced Animated Background with multiple layers -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="animate-wave absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,0.5),transparent_65%)]"></div>
+            <div class="animate-wave-delayed absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_150%,rgba(255,255,255,0.5),transparent_65%)]"></div>
+            <div class="animate-float absolute inset-0 opacity-20 bg-[linear-gradient(45deg,rgba(255,255,255,0.2)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.2)_50%,rgba(255,255,255,0.2)_75%,transparent_75%,transparent)]"></div>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="bg-white/60 backdrop-blur-xl sticky top-0 z-50 border-b border-gray-200/80 transition-all duration-300" id="main-nav">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center justify-between h-16 sm:h-20 px-4 sm:px-6 lg:px-8">
+                <!-- Logo - Updated for better mobile display -->
+                <a href="/" class="flex items-center space-x-3 sm:space-x-4 group">
+                    <div class="relative">
+                        <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-violet-600/20 via-fuchsia-600/20 to-indigo-600/20 blur-2xl group-hover:blur-3xl transition-all duration-500 animate-pulse"></div>
+                        <div class="absolute inset-0 rounded-xl rotate-180 bg-gradient-to-r from-violet-600/20 via-fuchsia-600/20 to-indigo-600/20 blur-xl group-hover:blur-2xl transition-all duration-500 animate-pulse delay-100"></div>
+                        <img src="/logo.svg" alt="MarineShip" class="relative h-8 w-8 sm:h-10 sm:w-10 transform group-hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="overflow-hidden">
+                        <h1 class="text-lg sm:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-600 via-fuchsia-600 to-indigo-600 animate-gradient">
+                            MarineShip
+                        </h1>
+                        <p class="text-[0.6rem] sm:text-[0.65rem] font-medium tracking-widest text-gray-600 transform transition-transform group-hover:translate-x-2">
+                            GLOBAL MARITIME services
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex lg:items-center lg:space-x-1">
+                    <a href="/" class="nav-link group">
+                        <span class="group-hover:text-violet-600 transition-colors duration-300">Home</span>
+                        <span class="nav-indicator"></span>
+                    </a>
+                    
+                    <!-- Solutions Dropdown -->
+                    <div class="relative group">
+                        <button class="nav-link">
+                            <span>services</span>
+                            <svg class="w-4 h-4 ml-1.5 transform transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                            <span class="nav-indicator"></span>
+                        </button>
+                        
+                        <!-- Enhanced Mega Menu -->
+                        <div class="absolute top-full left-1/2 transform -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out">
+                            <div class="w-screen max-w-4xl bg-white/90 rounded-2xl shadow-2xl border border-gray-200/80 backdrop-blur-xl overflow-hidden scale-95 group-hover:scale-100 transition-all duration-300">
+                                <div class="grid grid-cols-2 gap-8 p-8">
+                                    <div>
+                                        <div class="flex items-center space-x-3 mb-6">
+                                            <div class="p-2 rounded-lg bg-violet-100/50">
+                                                <svg class="w-6 h-6 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                                </svg>
+                                            </div>
+                                            <h3 class="text-lg font-semibold text-gray-900">Maritime Services</h3>
+                                        </div>
+                                        <div class="space-y-4">
+                                            <a href="/fleet" class="menu-item">
+                                                <div>
+                                                    <h4 class="text-gray-900 font-medium">Fleet Management</h4>
+                                                    <p class="text-sm text-gray-500">Optimize your fleet operations</p>
+                                                </div>
+                                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                                </svg>
+                                            </a>
+                                            <!-- Add more menu items -->
+                                        </div>
+                                    </div>
+                                    <div class="bg-gradient-to-br from-violet-50 to-indigo-50 rounded-xl p-6">
+                                        <h4 class="text-lg font-semibold text-gray-900 mb-2">Why Choose Us?</h4>
+                                        <p class="text-sm text-gray-600 mb-4">Industry-leading maritime services with 25+ years of excellence.</p>
+                                        <a href="/about" class="inline-flex items-center text-sm font-medium text-violet-600 hover:text-violet-700">
+                                            Learn more about us
+                                            <svg class="ml-1.5 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="/about" class="nav-link">
+                        <span>About</span>
+                        <span class="nav-indicator"></span>
+                    </a>
+                    <a href="/contact" class="nav-link">
+                        <span>Contact</span>
+                        <span class="nav-indicator"></span>
+                    </a>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="hidden lg:flex lg:items-center lg:space-x-4">
+                    <a href="/demo" class="btn-secondary group">
+                        <span class="group-hover:text-violet-600">Watch Demo</span>
+                        <svg class="ml-2 w-4 h-4 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </a>
+                    <a href="/quote" class="btn-primary group">
+                        <span>Get Started</span>
+                        <svg class="ml-2 -mr-1 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Updated Mobile Menu Button -->
+                <button type="button" class="lg:hidden mobile-menu-button inline-flex items-center justify-center p-2 rounded-lg text-gray-600 hover:text-violet-600 hover:bg-violet-50 transition-colors duration-200">
+                    <span class="sr-only">Open menu</span>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Enhanced Mobile Menu -->
+        <div class="hidden mobile-menu lg:hidden">
+            <div class="px-4 pt-2 pb-3 space-y-2 bg-white/90 backdrop-blur-xl border-t border-gray-200/80">
+                <a href="/" class="mobile-link">Home</a>
+                
+                <!-- Mobile Solutions Dropdown -->
+                <div class="mobile-dropdown">
+                    <button class="mobile-dropdown-button w-full text-left">
+                        <span>services</span>
+                        <svg class="w-4 h-4 ml-2 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown-content hidden pl-4 mt-2 space-y-2">
+                        <a href="/fleet" class="mobile-sublink">Fleet Management</a>
+                        <!-- Add more solution links as needed -->
+                    </div>
+                </div>
+                
+                <a href="/about" class="mobile-link">About</a>
+                <a href="/contact" class="mobile-link">Contact</a>
+                
+                <!-- Mobile Action Buttons -->
+                <div class="grid gap-2 pt-4">
+                    <a href="/demo" class="mobile-btn-secondary">
+                        Watch Demo
+                    </a>
+                    <a href="/quote" class="mobile-btn-primary">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<style>
+    @import url('https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap');
+
+    .nav-link {
+        @apply flex items-center px-4 py-2 text-gray-600 hover:text-violet-600 font-medium relative transition-all duration-300 hover:scale-105;
+    }
+
+    .nav-indicator {
+        @apply absolute -bottom-px left-0 right-0 h-0.5 bg-gradient-to-r from-violet-600 via-fuchsia-600 to-indigo-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left;
+    }
+
+    .menu-item {
+        @apply flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 transition-colors duration-200;
+    }
+
+    .btn-primary {
+        @apply inline-flex items-center px-6 py-3 rounded-xl text-sm font-medium text-white 
+        bg-gradient-to-r from-violet-600 via-fuchsia-600 to-indigo-600 
+        hover:from-violet-700 hover:via-fuchsia-700 hover:to-indigo-700 
+        transition-all duration-300 shadow-lg shadow-indigo-600/20 
+        hover:shadow-xl hover:shadow-indigo-600/30 
+        hover:-translate-y-0.5 hover:scale-105 
+        border border-white/20 backdrop-blur-sm;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center px-5 py-2.5 rounded-xl text-sm font-medium 
+        text-gray-700 bg-white/80 hover:bg-white 
+        transition-all duration-300 hover:shadow-lg 
+        hover:-translate-y-0.5 border border-gray-200/50 
+        backdrop-blur-sm hover:border-violet-200;
+    }
+
+    .mobile-link {
+        @apply block px-3 py-2.5 rounded-xl text-base font-medium text-gray-700 hover:text-violet-600 hover:bg-violet-50 transition-colors duration-200;
+    }
+
+    .mobile-btn-primary {
+        @apply block w-full text-center px-4 py-3 rounded-xl text-sm font-medium text-white 
+        bg-gradient-to-r from-violet-600 to-indigo-600 
+        hover:from-violet-700 hover:to-indigo-700 
+        transition-all duration-200 
+        shadow-md shadow-indigo-600/10 
+        hover:shadow-lg hover:shadow-indigo-600/20;
+    }
+
+    .mobile-btn-secondary {
+        @apply block w-full text-center px-4 py-3 rounded-xl text-sm font-medium 
+        text-gray-700 bg-gray-50 hover:bg-gray-100 
+        transition-all duration-200 
+        border border-gray-200/50;
+    }
+
+    @keyframes wave {
+        0% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-7%) rotate(3deg); }
+        100% { transform: translateY(0) rotate(0deg); }
+    }
+
+    @keyframes wave-delayed {
+        0% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-10%) rotate(-3deg); }
+        100% { transform: translateY(0) rotate(0deg); }
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0) translateX(0); }
+        50% { transform: translateY(-5px) translateX(5px); }
+        100% { transform: translateY(0) translateX(0); }
+    }
+
+    .animate-wave {
+        animation: wave 12s ease-in-out infinite;
+    }
+
+    .animate-wave-delayed {
+        animation: wave-delayed 15s ease-in-out infinite;
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    /* Enhanced Animations */
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .animate-gradient {
+        background-size: 200% 200%;
+        animation: gradient 8s ease infinite;
+    }
+
+    /* Add scroll behavior */
+    .nav-scrolled {
+        @apply bg-white/90 shadow-lg shadow-gray-900/5;
+    }
+
+    /* Updated/Added Mobile Styles */
+    .mobile-dropdown-button {
+        @apply flex items-center justify-between px-3 py-2 rounded-xl text-base font-medium text-gray-700 hover:text-violet-600 hover:bg-violet-50 transition-colors duration-200 w-full;
+    }
+
+    .mobile-sublink {
+        @apply block px-3 py-2 rounded-xl text-sm font-medium text-gray-600 hover:text-violet-600 hover:bg-violet-50/50 transition-colors duration-200;
+    }
+</style>
+
+<script>
+    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const notificationDismiss = document.querySelector('.notification-dismiss');
+
+    mobileMenuButton?.addEventListener('click', () => {
+        mobileMenu?.classList.toggle('hidden');
+    });
+
+    notificationDismiss?.addEventListener('click', () => {
+        notificationDismiss.closest('.notification-bar')?.remove();
+    });
+
+    // Get the notification bar and dismiss button elements
+    const notificationBar = document.getElementById('notification-bar');
+    const dismissButton = document.getElementById('notification-dismiss');
+
+    // Add click event listener to the dismiss button
+    dismissButton?.addEventListener('click', () => {
+        // Hide the notification bar with a fade-out effect
+        if (notificationBar) {
+            notificationBar.style.transition = 'opacity 0.3s ease-out';
+            notificationBar.style.opacity = '0';
+            
+            // Remove the element after the animation
+            setTimeout(() => {
+                notificationBar.style.display = 'none';
+            }, 300);
+        }
+    });
+
+    // Enhanced Scroll Behavior
+    const nav = document.getElementById('main-nav');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll <= 0) {
+            nav?.classList.remove('nav-scrolled');
+        }
+        
+        if (currentScroll > lastScroll && currentScroll > 80) {
+            nav?.classList.add('nav-scrolled');
+        }
+        
+        lastScroll = currentScroll;
+    });
+
+    // Add mobile dropdown functionality
+    const mobileDropdownButtons = document.querySelectorAll('.mobile-dropdown-button');
+    
+    mobileDropdownButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('svg');
+            
+            content?.classList.toggle('hidden');
+            icon?.classList.toggle('rotate-180');
+        });
+    });
+</script>

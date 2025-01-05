@@ -1,0 +1,369 @@
+---
+import { Image } from 'astro:assets';
+import banner1 from '../../public/banner1.jpg';
+import banner2 from '../../public/banner2.jpg';
+import banner3 from '../../public/banner3.jpg';
+
+const images = [
+  { src: banner1, alt: "Banner 1" },
+  { src: banner2, alt: "Banner 2" },
+  { src: banner3, alt: "Banner 3" },
+];
+---
+
+<section class="relative min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 py-8 sm:py-16 md:py-24 overflow-hidden">
+  <!-- Animated gradient background -->
+  <div class="absolute inset-0 bg-gradient-to-r from-blue-600/30 via-purple-600/30 to-pink-600/30 animate-gradient-xy"></div>
+  
+  <!-- Particle effects -->
+  <div class="particles absolute inset-0" aria-hidden="true">
+    {Array.from({ length: 20 }).map((_, i) => (
+      <div 
+        class="particle absolute rounded-full bg-white/20"
+        style={`
+          width: ${Math.random() * 6 + 2}px;
+          height: ${Math.random() * 6 + 2}px;
+          top: ${Math.random() * 100}%;
+          left: ${Math.random() * 100}%;
+          animation: float ${Math.random() * 8 + 4}s ease-in-out infinite;
+          animation-delay: -${Math.random() * 4}s;
+        `}
+      ></div>
+    ))}
+  </div>
+
+  <div class="container mx-auto px-3 sm:px-4 relative z-10">
+    <div class="flex flex-col items-center text-center">
+      <!-- Glass card effect for image -->
+      <div class="relative w-full max-w-7xl -mx-3 sm:mx-0 mb-8 sm:mb-12 animate-fadeIn">
+        <div class="backdrop-blur-sm bg-white/10 p-2 sm:p-3 rounded-none sm:rounded-xl shadow-2xl">
+          <div class="relative overflow-hidden sm:rounded-lg aspect-[16/9] sm:aspect-[21/9]" id="slider-container">
+            <div class="absolute inset-0 bg-gradient-to-r from-white/10 to-white/20 animate-pulse" id="loading-skeleton"></div>
+            
+            <div class="flex transition-transform duration-500 ease-out" id="slider">
+              {images.map((image, index) => (
+                <div class="w-full flex-shrink-0">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    class="w-full h-full object-cover rounded-lg transform hover:scale-[1.02] transition-all duration-500"
+                    width={2100}
+                    height={900}
+                    format="webp"
+                    quality={90}
+                    loading={index === 0 ? "eager" : "lazy"}
+                  />
+                </div>
+              ))}
+            </div>
+
+            <!-- Add subtle overlay gradient -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+
+            <!-- Updated Navigation Buttons -->
+            <button 
+              class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full 
+                     bg-white/90 hover:bg-white flex items-center justify-center text-gray-800 
+                     hover:text-gray-900 transition-all hover:shadow-lg hover:scale-105
+                     focus:outline-none focus:ring-2 focus:ring-white/50"
+              id="prev-btn"
+              aria-label="Previous slide"
+            >
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button 
+              class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full 
+                     bg-white/90 hover:bg-white flex items-center justify-center text-gray-800 
+                     hover:text-gray-900 transition-all hover:shadow-lg hover:scale-105
+                     focus:outline-none focus:ring-2 focus:ring-white/50"
+              id="next-btn"
+              aria-label="Next slide"
+            >
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            <!-- Updated Dots Navigation -->
+            <div class="absolute bottom-2 sm:bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 sm:gap-2">
+              {images.map((_, index) => (
+                <button 
+                  class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-white/50 hover:bg-white/80 transition-all dot-btn
+                         focus:outline-none focus:ring-2 focus:ring-white/50"
+                  data-index={index}
+                  aria-label={`Go to slide ${index + 1}`}
+                ></button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Updated heading and text -->
+      <h1 
+        class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text 
+               bg-gradient-to-r from-white to-blue-200 mb-4 sm:mb-8 animate-slideUp px-4"
+      >
+        Welcome to Our Platform
+      </h1>
+      
+      <p class="text-lg sm:text-xl md:text-2xl text-white/90 max-w-3xl mb-8 sm:mb-12 leading-relaxed animate-slideUp delay-100 px-4">
+        Discover amazing features and solutions that will help transform your digital experience. Start your journey with us today.
+      </p>
+
+      <!-- Updated buttons -->
+      <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 animate-slideUp delay-200 w-full sm:w-auto px-4">
+        <a
+          href="#get-started"
+          class="group w-full sm:w-auto px-8 sm:px-10 py-4 bg-white/95 text-indigo-900 font-bold rounded-xl 
+                 hover:bg-white hover:shadow-xl hover:shadow-white/20 active:scale-95
+                 transition-all duration-300 ease-out text-center"
+        >
+          <span class="flex items-center justify-center gap-2">
+            Get Started
+            <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </span>
+        </a>
+        <a
+          href="#learn-more"
+          class="group w-full sm:w-auto px-8 sm:px-10 py-4 bg-white/10 backdrop-blur-sm text-white font-bold rounded-xl
+                 hover:bg-white/20 hover:shadow-xl hover:shadow-white/10 active:scale-95
+                 transition-all duration-300 ease-out text-center"
+        >
+          Learn More
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes gradient-xy {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  .animate-gradient-xy {
+    background-size: 400% 400%;
+    animation: gradient-xy 15s ease infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) translateX(0); }
+    50% { transform: translateY(-20px) translateX(10px); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0; 
+      transform: translateY(30px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 1.5s ease-out forwards;
+  }
+
+  .animate-slideUp {
+    animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  /* Particle animation variations */
+  .particle:nth-child(odd) {
+    animation-duration: 8s;
+  }
+
+  .particle:nth-child(even) {
+    animation-duration: 12s;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  /* Add active states for mobile */
+  @media (max-width: 640px) {
+    .dot-btn {
+      width: 8px;
+      height: 8px;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+  }
+
+  /* Prevent text selection during swipe */
+  #slider-container {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+</style>
+
+<script>
+  // Slider functionality
+  const slider = document.querySelector('#slider') as HTMLElement;
+  const prevBtn = document.querySelector('#prev-btn') as HTMLButtonElement;
+  const nextBtn = document.querySelector('#next-btn') as HTMLButtonElement;
+  const dots = document.querySelectorAll('.dot-btn');
+  const sliderContainer = document.querySelector('#slider-container') as HTMLElement;
+  
+  let currentSlide = 0;
+  const slideCount = slider.children.length;
+
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let isSwiping = false;
+
+  function updateSlider() {
+    // Update slider position
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    
+    // Update dots
+    dots.forEach((dot, index) => {
+      if (index === currentSlide) {
+        dot.classList.add('bg-white');
+        dot.classList.remove('bg-white/50');
+      } else {
+        dot.classList.remove('bg-white');
+        dot.classList.add('bg-white/50');
+      }
+    });
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % slideCount;
+    updateSlider();
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+    updateSlider();
+  }
+
+  // Event listeners
+  nextBtn.addEventListener('click', nextSlide);
+  prevBtn.addEventListener('click', prevSlide);
+  
+  // Dot navigation
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      currentSlide = index;
+      updateSlider();
+    });
+  });
+
+  // Auto-advance slides (optional)
+  let intervalId = setInterval(nextSlide, 5000);
+
+  // Pause auto-advance on hover
+  slider.parentElement?.addEventListener('mouseenter', () => {
+    clearInterval(intervalId);
+  });
+
+  slider.parentElement?.addEventListener('mouseleave', () => {
+    intervalId = setInterval(nextSlide, 5000);
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prevSlide();
+    if (e.key === 'ArrowRight') nextSlide();
+  });
+
+  // Add better touch handling
+  sliderContainer.addEventListener('touchstart', (e) => {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    isSwiping = false;
+  }, { passive: true });
+
+  sliderContainer.addEventListener('touchmove', (e) => {
+    if (isSwiping) return;
+
+    const touchCurrentX = e.touches[0].clientX;
+    const touchCurrentY = e.touches[0].clientY;
+    const deltaX = touchStartX - touchCurrentX;
+    const deltaY = touchStartY - touchCurrentY;
+
+    // Check if horizontal scroll is more significant than vertical
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      isSwiping = true;
+      e.preventDefault(); // Prevent page scroll
+      
+      // Add visual feedback during swipe
+      slider.style.transform = `translateX(${-currentSlide * 100 - (deltaX / sliderContainer.offsetWidth) * 100}%)`;
+    }
+  }, { passive: false });
+
+  sliderContainer.addEventListener('touchend', (e) => {
+    if (!isSwiping) return;
+
+    const deltaX = touchStartX - e.changedTouches[0].clientX;
+    const threshold = sliderContainer.offsetWidth * 0.2; // 20% of container width
+
+    if (Math.abs(deltaX) > threshold) {
+      if (deltaX > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    } else {
+      // Reset to current slide if threshold not met
+      updateSlider();
+    }
+  }, { passive: true });
+
+  // Add double-tap protection
+  let lastTap = 0;
+  const buttons = [prevBtn, nextBtn, ...dots];
+  buttons.forEach(button => {
+    button.addEventListener('touchend', (e) => {
+      const currentTime = new Date().getTime();
+      const tapLength = currentTime - lastTap;
+      if (tapLength < 500 && tapLength > 0) {
+        e.preventDefault();
+        return;
+      }
+      lastTap = currentTime;
+    });
+  });
+</script>
