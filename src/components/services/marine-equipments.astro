@@ -1,0 +1,230 @@
+---
+const marineEquipments = [
+    {
+        title: "Pneumatic Equipment",
+        description:
+            "Industrial-grade pneumatic tools and equipment for marine applications",
+        image: "/public/services/marine-equipments/2.jpg",
+        features: [
+            "Air Compressors",
+            "Pneumatic Wrenches",
+            "Air Motors",
+            "Pressure Regulators",
+            "Air Treatment Units",
+        ],
+        certification: "ISO 9001:2015",
+    },
+    {
+        title: "Cutting Tools",
+        description:
+            "Precision cutting tools for marine maintenance and repair",
+        image: "/public/services/marine-equipments/3.jpg",
+        features: [
+            "Industrial Cutting Machines",
+            "Plasma Cutters",
+            "Grinding Equipment",
+            "Metal Shears",
+            "Pipe Cutters",
+        ],
+        certification: "CE Certified",
+    },
+    {
+        title: "Non-Sparking Tools",
+        description:
+            "Safety-certified non-sparking tools for hazardous environments",
+        image: "/public/services/marine-equipments/4.jpg",
+        features: [
+            "Bronze Hammers",
+            "Aluminum Bronze Wrenches",
+            "Beryllium Copper Tools",
+            "Safety Screwdrivers",
+            "ATEX Certified Equipment",
+        ],
+        certification: "ATEX Certified",
+    },
+    {
+        title: "Measuring Instruments",
+        description: "High-precision measuring and testing equipment",
+        image: "/public/services/marine-equipments/5.jpg",
+        features: [
+            "Digital Calipers",
+            "Micrometers",
+            "Thickness Gauges",
+            "Laser Measurement Tools",
+            "Testing Equipment",
+        ],
+        certification: "ISO/IEC 17025",
+    },
+];
+
+const additionalServices = [
+    {
+        icon: "🛠️",
+        title: "Equipment Rental",
+        description:
+            "Short and long-term rental options for specialized marine equipment",
+    },
+    {
+        icon: "🔧",
+        title: "Maintenance Services",
+        description: "Professional maintenance and calibration services",
+    },
+    {
+        icon: "📦",
+        title: "Custom Solutions",
+        description:
+            "Tailored equipment solutions for specific marine applications",
+    },
+];
+
+const certifications = [
+    "DNV-GL Certified",
+    "ABS Approved",
+    "Lloyd's Register Certified",
+    "RINA Certified",
+];
+---
+
+<main class="bg-gradient-to-b from-gray-50 to-white">
+    <!-- Hero Section -->
+    <section class="relative h-[650px] overflow-hidden">
+        <div class="absolute inset-0">
+            <img
+                src="/public/services/marine-equipments/1.jpg"
+                alt="Marine Equipment"
+                class="w-full h-full object-cover filter brightness-90"
+            />
+            <div class="absolute inset-0"></div>
+        </div>
+        <div class="relative container mx-auto px-4 h-full flex items-center">
+            <div class="max-w-3xl">
+                <h1 class="text-7xl font-bold text-white mb-8 leading-tight">
+                    Marine Equipment Solutions
+                </h1>
+                <p class="text-2xl text-white leading-relaxed max-w-2xl">
+                    Professional-grade marine equipment and tools, certified to
+                    international standards and designed for maritime
+                    excellence.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Categories -->
+    <section class="py-24">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                {
+                    marineEquipments.map((equipment) => (
+                        <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
+                            <div class="aspect-video relative">
+                                <img
+                                    src={equipment.image}
+                                    alt={equipment.title}
+                                    class="w-full h-full object-cover rounded-t-xl"
+                                />
+                                <span class="absolute top-4 right-4 px-4 py-1.5 bg-[#344CB7] text-white text-sm font-medium rounded-full shadow-md">
+                                    {equipment.certification}
+                                </span>
+                            </div>
+
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold text-black mb-4">
+                                    {equipment.title}
+                                </h3>
+                                <p class="text-black mb-6">
+                                    {equipment.description}
+                                </p>
+                                <ul class="space-y-3">
+                                    {equipment.features.map((feature) => (
+                                        <li class="flex items-center text-black">
+                                            <span class="mr-3 text-[#344CB7] text-lg">
+                                                •
+                                            </span>
+                                            {feature}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Services -->
+    <section class="py-24">
+        <div class="container mx-auto px-4">
+            <h2
+                class="text-5xl font-bold text-center mb-20 bg-gradient-to-r from-[#344CB7] to-black bg-clip-text text-transparent"
+            >
+                Additional Services
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                {
+                    additionalServices.map((service) => (
+                        <div class="group relative bg-white rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-300">
+                            <div class="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 border-2 border-[#344CB7] rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform shadow-lg">
+                                <span class="text-4xl bg-gradient-to-r from-[#344CB7] to-black bg-clip-text text-transparent">
+                                    {service.icon}
+                                </span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-5 mt-8 text-center bg-gradient-to-r from-[#344CB7] to-black bg-clip-text text-transparent">
+                                {service.title}
+                            </h3>
+                            <p class="text-center text-lg bg-gradient-to-r from-[#344CB7] to-black bg-clip-text text-transparent">
+                                {service.description}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2
+                class="text-4xl font-bold mb-12 bg-gradient-to-r from-[#344CB7] to-black bg-clip-text text-transparent"
+            >
+                Our Certifications
+            </h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                {
+                    certifications.map((cert) => (
+                        <span class="px-6 py-3 border-2 border-[#344CB7] bg-gradient-to-r from-[#344CB7] to-black bg-clip-text text-transparent rounded-full font-medium hover:border-black transition-colors">
+                            {cert}
+                        </span>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24">
+        <div class="container mx-auto px-4 text-center">
+            <h2
+                class="text-5xl font-bold mb-10 bg-gradient-to-r from-[#344CB7] to-black bg-clip-text text-transparent"
+            >
+                Ready to Equip Your Vessel?
+            </h2>
+            <p
+                class="text-2xl mb-14 max-w-3xl mx-auto bg-gradient-to-r from-[#344CB7] to-black bg-clip-text text-transparent"
+            >
+                Contact our team for expert guidance on selecting the right
+                equipment for your maritime needs.
+            </p>
+            <div class="flex justify-center gap-8">
+                <a
+                    href="/contact"
+                    class="px-10 py-5 border-2 border-[#344CB7] bg-gradient-to-r from-[#344CB7] to-black bg-clip-text text-transparent rounded-xl font-bold text-lg hover:border-black transition-colors"
+                >
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+</main>

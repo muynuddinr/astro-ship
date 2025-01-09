@@ -1,0 +1,335 @@
+---
+import { Image } from "astro:assets";
+
+const cabinCategories = [
+    {
+        title: "Clothing & Textiles",
+        description:
+            "High-quality maritime uniforms and safety wear designed for durability and comfort in marine environments.",
+        image: "/public/services/cabin-stores/2.jpg",
+        items: [
+            "Crew Uniforms",
+            "Safety wear",
+            "Protective clothing",
+            "Work gear",
+            "Linen & bedding",
+            "Towels & Washcloths",
+            "Weather Protection Gear",
+            "Safety Footwear",
+        ],
+    },
+    {
+        title: "Chemical Products",
+        description:
+            "Marine-grade cleaning and maintenance products that meet international safety standards.",
+        image: "/public/services/cabin-stores/3.jpg",
+        items: [
+            "Cleaning supplies",
+            "Disinfectants",
+            "Sanitizers",
+            "Air fresheners",
+            "Laundry products",
+            "Deck Cleaners",
+            "Hull Cleaners",
+            "Biodegradable Solutions",
+        ],
+    },
+    {
+        title: "Stationery & Documentation",
+        description:
+            "Complete range of maritime documentation and office supplies for efficient vessel management.",
+        image: "/public/services/cabin-stores/4.jpg",
+        items: [
+            "Office supplies",
+            "Documentation forms",
+            "Log books",
+            "Writing materials",
+            "Filing systems",
+            "Safety Manuals",
+            "Navigation Charts",
+            "Record Books",
+        ],
+    },
+    {
+        title: "Medical Supplies",
+        description:
+            "Comprehensive medical equipment and supplies meeting maritime regulations and emergency needs.",
+        image: "/public/services/cabin-stores/5.jpg",
+        items: [
+            "First aid kits",
+            "Medications",
+            "Bandages",
+            "Medical equipment",
+            "Emergency supplies",
+            "Defibrillators",
+            "Stretchers",
+            "Medical Reference Guides",
+        ],
+    },
+    {
+        title: "Galley & Dining",
+        description:
+            "Professional-grade galley equipment and dining supplies for maritime food service.",
+        image: "/public/services/cabin-stores/6.jpg",
+        items: [
+            "Tableware",
+            "Kitchen utensils",
+            "Cooking equipment",
+            "Storage containers",
+            "Serving items",
+            "Refrigeration Supplies",
+            "Food Storage Solutions",
+            "Beverage Service Items",
+        ],
+    },
+    {
+        title: "Housekeeping & Maintenance",
+        description:
+            "Essential cleaning and maintenance supplies for vessel upkeep and sanitation.",
+        image: "/public/services/cabin-stores/7.jpg",
+        items: [
+            "Brushes & mops",
+            "Cleaning mats",
+            "Lavatory products",
+            "Waste management",
+            "Storage solutions",
+            "Deck Maintenance Tools",
+            "Cabin Cleaning Supplies",
+            "Waste Segregation Systems",
+        ],
+    },
+];
+---
+
+<main class="bg-gradient-to-b from-gray-50 to-white">
+    <!-- Hero Section - Enhanced with parallax and animated text -->
+    <section class="relative h-[600px]">
+        <div class="absolute inset-0">
+            <Image
+                src="/public/services/cabin-stores/1.jpg"
+                alt="Cabin Stores Services"
+                class="w-full h-full object-cover transform scale-105 motion-safe:animate-subtle-zoom"
+                width={1920}
+                height={600}
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
+        </div>
+        <div class="relative container mx-auto px-4 h-full flex items-center">
+            <div class="text-white max-w-3xl animate-fade-in-up">
+                <h1 class="text-7xl font-bold mb-8 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-[#344CB7]">
+                    Cabin Stores
+                </h1>
+                <p class="text-2xl font-light leading-relaxed border-l-4 border-[#344CB7] pl-6">
+                    Comprehensive maritime supply solutions for all your vessel needs. Quality products, reliable service, and global delivery.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section - Enhanced with glass morphism -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center backdrop-blur-md bg-white/90 rounded-2xl shadow-2xl p-12 transform -mt-24 relative z-10 border border-white/20">
+                <h2 class="text-5xl font-bold text-gray-900 mb-8 bg-gradient-to-r from-[#344CB7] to-black bg-clip-text text-transparent">
+                    Complete Maritime Supply Solutions
+                </h2>
+                <p class="text-xl text-gray-600 leading-relaxed">
+                    Our Cabin Stores service provides a comprehensive range of high-quality supplies essential for maritime operations. From professional-grade clothing to advanced medical equipment, we ensure your vessel is fully equipped with everything needed for safe and efficient operations.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Grid - Enhanced with modern card design -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <!-- Add category filter buttons -->
+            <div class="flex flex-wrap gap-4 justify-center mb-12">
+                <button 
+                    class="px-6 py-2 rounded-full bg-[#344CB7]/10 text-[#344CB7] hover:bg-[#344CB7] hover:text-white transition-all duration-300 focus:ring-2 focus:ring-[#344CB7] active:scale-95"
+                    data-filter="all"
+                >
+                    All Categories
+                </button>
+                {cabinCategories.map((category) => (
+                    <button 
+                        class="px-6 py-2 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 focus:ring-2 focus:ring-blue-400 active:scale-95"
+                        data-filter={category.title.toLowerCase().replace(/\s+/g, '-')}
+                    >
+                        {category.title}
+                    </button>
+                ))}
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                {cabinCategories.map((category) => (
+                    <div 
+                        class="flip-card h-[600px]" 
+                        data-category={category.title.toLowerCase().replace(/\s+/g, '-')}
+                    >
+                        <div class="flip-card-inner">
+                            <!-- Front of card -->
+                            <div class="flip-card-front bg-white rounded-2xl shadow-xl overflow-hidden">
+                                <div class="relative h-64">
+                                    <Image
+                                        src={category.image}
+                                        alt={category.title}
+                                        class="w-full h-full object-cover"
+                                        width={400}
+                                        height={300}
+                                    />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                                    <div class="absolute bottom-4 left-4 right-4">
+                                        <h3 class="text-2xl font-bold text-white mb-2">
+                                            {category.title}
+                                        </h3>
+                                        <p class="text-white/90">
+                                            Click to see details
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="p-8">
+                                    <p class="text-gray-600 text-lg">
+                                        {category.description}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Back of card -->
+                            <div class="flip-card-back bg-gradient-to-br from-[#344CB7] to-black rounded-2xl p-8 text-white">
+                                <h3 class="text-2xl font-bold mb-6">Available Items</h3>
+                                <ul class="space-y-3">
+                                    {category.items.map((item) => (
+                                        <li class="flex items-center text-lg group">
+                                            <svg
+                                                class="w-5 h-5 mr-3 text-[#344CB7]/40 group-hover:scale-110 transition-transform"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    stroke-width="2"
+                                                    d="M5 13l4 4L19 7"
+                                                />
+                                            </svg>
+                                            <span class="group-hover:translate-x-2 transition-transform">
+                                                {item}
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action - Enhanced with modern gradient and effects -->
+    <section class="py-24 relative overflow-hidden">
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h2 class="text-5xl font-bold bg-gradient-to-r from-[#344CB7] to-black bg-clip-text text-transparent mb-8">
+                Need Specialized Maritime Supplies?
+            </h2>
+            <p class="text-2xl bg-gradient-to-r from-[#344CB7] to-black bg-clip-text text-transparent mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+                Our expert team is ready to assist you with custom orders and specific requirements for your vessel.
+            </p>
+            <div class="flex justify-center gap-6">
+                <a
+                    href="/contact"
+                    class="inline-block bg-gradient-to-r from-[#344CB7] to-black text-white px-12 py-5 rounded-xl hover:opacity-90 transition-all duration-300 font-semibold text-xl hover:shadow-2xl hover:-translate-y-1 transform"
+                >
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<style>
+    @keyframes subtle-zoom {
+        from { transform: scale(1); }
+        to { transform: scale(1.05); }
+    }
+    
+    @keyframes fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .animate-subtle-zoom {
+        animation: subtle-zoom 20s infinite alternate ease-in-out;
+    }
+    
+    .animate-fade-in-up {
+        animation: fade-in-up 1s ease-out forwards;
+    }
+
+    .flip-card {
+        perspective: 1000px;
+        cursor: pointer;
+    }
+
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+    }
+
+    .flip-card-back {
+        transform: rotateY(180deg);
+    }
+
+    [data-category].hidden {
+        display: none;
+    }
+</style>
+
+<script>
+    // Category filtering functionality
+    const filterButtons = document.querySelectorAll('[data-filter]');
+    const cards = document.querySelectorAll('.flip-card');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = (button as HTMLButtonElement).dataset.filter;
+            
+            // Update active button state
+            filterButtons.forEach(btn => btn.classList.remove('bg-blue-600', 'text-white'));
+            button.classList.add('bg-blue-600', 'text-white');
+            
+            // Filter cards
+            cards.forEach(card => {
+                if (filter === 'all' || (card as HTMLElement).dataset.category === filter) {
+                    card.classList.remove('hidden');
+                    (card as HTMLElement).style.animation = 'fade-in-up 0.5s ease-out forwards';
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    });
+</script>

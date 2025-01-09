@@ -1,63 +1,434 @@
 ---
 const currentYear = new Date().getFullYear();
+
+const services = [
+    { name: "Engine Stores", href: "/services/engine-stores" },
+    { name: "Deck Stores", href: "/services/deck-stores" },
+    { name: "Provision Stores", href: "/services/provision-stores" },
+    { name: "Marine Equipments", href: "/services/marine-equipments" },
+    { name: "Cabin Stores", href: "/services/cabin-stores" },
+];
+
+const company = [
+    { name: "Terms of service", href: "/terms" },
+    { name: "Privacy policy", href: "/privacy" },
+    { name: "Cookie policy", href: "/cookie" },
+];
+
+const locations = [
+    {
+        name: "Singapore",
+        address: "123 Maritime Way",
+        mapLink: "https://maps.google.com/?q=123+Maritime+Way+Singapore",
+        phone: "+65 1234 5678",
+        email: "info@marineship.com",
+    },
+    {
+        name: "Dubai",
+        address: "456 Port Avenue",
+        mapLink: "https://maps.google.com/?q=456+Port+Avenue+Dubai",
+        phone: "+971 1234 5678",
+        email: "info@marineship.com",
+    },
+    {
+        name: "Rotterdam",
+        address: "789 Harbor Street",
+        mapLink: "https://maps.google.com/?q=789+Harbor+Street+Rotterdam",
+        phone: "+31 1234 5678",
+        email: "info@marineship.com",
+    },
+];
+
+const social = [
+    {
+        name: "Facebook",
+        href: "#",
+        icon: "facebook",
+        hoverColor: "hover:text-[#1877F2]",
+        hoverBg: "group-hover:bg-[#1877F2]/10",
+    },
+    {
+        name: "Instagram",
+        href: "#",
+        icon: "instagram",
+        hoverColor: "hover:text-[#E4405F]",
+    },
+    {
+        name: "LinkedIn",
+        href: "#",
+        icon: "linkedin",
+        hoverColor: "hover:text-[#0A66C2]",
+    },
+    {
+        name: "Twitter",
+        href: "#",
+        icon: "twitter",
+        hoverColor: "hover:text-[#1DA1F2]",
+    },
+];
 ---
 
-<footer class="bg-white text-gray-800 py-12">
-    <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <!-- Company Info -->
-            <div class="col-span-1">
-                <h3 class="text-xl font-bold mb-4">Marine Ship Industries</h3>
-                <p class="text-gray-600 mb-4">Leading the way in maritime excellence since 1985</p>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-600 hover:text-gray-900"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-gray-900"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-gray-900"><i class="fab fa-facebook"></i></a>
+<footer class="bg-gradient-to-br from-blue-900 to-blue-950 relative">
+    <!-- Enhanced background pattern with parallax effect -->
+    <div class="absolute inset-0 opacity-5">
+        <div
+            class="absolute inset-0 bg-repeat bg-[url('/grid-pattern.svg')] motion-safe:animate-subtle-float"
+        >
+        </div>
+    </div>
+
+    <!-- Enhanced wave animation -->
+    <div class="w-full relative overflow-hidden">
+        <svg
+            class="w-full h-20 text-blue-900 motion-safe:animate-wave"
+            viewBox="0 0 1440 54"
+            fill="white"
+            preserveAspectRatio="none"
+        >
+            <path d="M0,0 C480,54 960,54 1440,0 L1440,54 L0,54 Z">
+                <animate
+                    attributeName="d"
+                    dur="8s"
+                    repeatCount="indefinite"
+                    values="M0,0 C480,54 960,54 1440,0 L1440,54 L0,54 Z;
+                            M0,0 C480,35 960,70 1440,0 L1440,54 L0,54 Z;
+                            M0,0 C480,54 960,54 1440,0 L1440,54 L0,54 Z"
+                ></animate>
+            </path>
+        </svg>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
+        <!-- Main Footer Content -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            <!-- Company Info - Updated styling -->
+            <div class="space-y-8">
+                <img
+                    src="/public/home/logo.jpg"
+                    alt="MarineShip Logo"
+                    class="h-12 hover:opacity-90 transition-opacity transform hover:scale-105 duration-300"
+                />
+                <p
+                    class="text-blue-100 text-sm leading-relaxed border-l-4 border-blue-600 pl-4"
+                >
+                    Your trusted partner in maritime excellence. Delivering
+                    innovative solutions across the seven seas since 1980. With
+                    over 40 years of experience, we've established ourselves as
+                    a global leader in marine services, committed to safety,
+                    reliability, and sustainable maritime operations. Our
+                    worldwide network of experts ensures 24/7 support for your
+                    maritime needs.
+                </p>
+                <div class="flex space-x-6">
+                    {
+                        social.map((item) => (
+                            <a
+                                href={item.href}
+                                class={`text-blue-200 p-3 rounded-full transition-all duration-300 group relative hover:-translate-y-1`}
+                            >
+                                <div
+                                    class={`absolute inset-0 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 ${item.hoverBg || "group-hover:bg-blue-600/10"}`}
+                                />
+                                <i
+                                    class={`fab fa-${item.icon} text-2xl relative z-10 ${item.hoverColor}`}
+                                />
+                                <span class="absolute -top-10 left-1/2 -translate-x-1/2 bg-white text-blue-900 px-2 py-1 rounded text-sm opacity-0 group-hover:opacity-100 transition-all duration-300 shadow-lg whitespace-nowrap">
+                                    {item.name}
+                                </span>
+                            </a>
+                        ))
+                    }
                 </div>
             </div>
 
-            <!-- Services -->
-            <div class="col-span-1">
-                <h4 class="text-lg font-semibold mb-4">Our Services</h4>
-                <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-600 hover:text-gray-900">Ship Building</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-gray-900">Ship Repair</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-gray-900">Maritime Consulting</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-gray-900">Naval Architecture</a></li>
+            <!-- Services - Updated styling -->
+            <div
+                class="backdrop-blur-sm bg-blue-900/10 p-6 rounded-xl hover:shadow-xl transition-all duration-300 hover:bg-blue-900/20"
+            >
+                <h3
+                    class="text-white font-bold mb-6 text-lg border-b border-blue-700 pb-2"
+                >
+                    Our Services
+                </h3>
+                <ul class="space-y-4">
+                    {
+                        services.map((service) => (
+                            <li>
+                                <a
+                                    href={service.href}
+                                    class="text-blue-200 hover:text-white transition-all duration-300 flex items-center group relative overflow-hidden rounded-lg p-2"
+                                >
+                                    <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition-colors duration-300" />
+                                    <svg
+                                        class="w-4 h-4 mr-2 transform group-hover:translate-x-1 transition-transform relative z-10"
+                                        fill="currentColor"
+                                        viewBox="0 0 20 20"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                            clip-rule="evenodd"
+                                        />
+                                    </svg>
+                                    <span class="relative z-10">
+                                        {service.name}
+                                    </span>
+                                </a>
+                            </li>
+                        ))
+                    }
                 </ul>
             </div>
 
-            <!-- Contact Info -->
-            <div class="col-span-1">
-                <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
-                <ul class="space-y-2 text-gray-600">
-                    <li>123 Harbor Drive</li>
-                    <li>Port City, PC 12345</li>
-                    <li>Phone: (555) 123-4567</li>
-                    <li>Email: info@marineshipindustries.com</li>
-                </ul>
+            <!-- Global Offices - Updated styling -->
+            <div class="backdrop-blur-sm bg-blue-900/10 p-6 rounded-xl">
+                <h3
+                    class="text-white font-bold mb-6 text-lg border-b border-blue-700 pb-2"
+                >
+                    Global Offices
+                </h3>
+                <div class="space-y-6">
+                    {
+                        locations.map((location) => (
+                            <div class="text-blue-200 transition-colors duration-300">
+                                <p class="font-semibold flex items-center">
+                                    <svg
+                                        class="w-4 h-4 mr-2"
+                                        fill="currentColor"
+                                        viewBox="0 0 20 20"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                                            clip-rule="evenodd"
+                                        />
+                                    </svg>
+                                    {location.name}
+                                </p>
+                                <div class="ml-6 space-y-1">
+                                    <a
+                                        href={location.mapLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="text-sm block hover:text-white transition-colors"
+                                    >
+                                        {location.address}
+                                    </a>
+                                    <a
+                                        href={`tel:${location.phone}`}
+                                        class="text-sm block hover:text-white transition-colors"
+                                    >
+                                        {location.phone}
+                                    </a>
+                                    <a
+                                        href={`mailto:${location.email}`}
+                                        class="text-sm block hover:text-white transition-colors"
+                                    >
+                                        {location.email}
+                                    </a>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
 
-            <!-- Newsletter -->
-            <div class="col-span-1">
-                <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
-                <p class="text-gray-600 mb-4">Subscribe to our newsletter for industry updates</p>
-                <form class="flex flex-col space-y-2">
-                    <input 
-                        type="email" 
-                        placeholder="Enter your email" 
-                        class="px-4 py-2 bg-gray-100 text-gray-800 rounded"
-                    >
-                    <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded text-white">
-                        Subscribe
-                    </button>
-                </form>
+            <!-- Contact - Updated styling -->
+            <div class="backdrop-blur-sm bg-blue-900/10 p-6 rounded-xl">
+                <h3
+                    class="text-white font-bold mb-6 text-lg border-b border-blue-700 pb-2"
+                >
+                    Get in Touch
+                </h3>
+                <div class="space-y-6">
+                    <p class="text-blue-200 flex items-center">
+                        <svg
+                            class="w-4 h-4 mr-2"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                        >
+                            <path
+                                d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
+                            ></path>
+                        </svg>
+                        <span class="block">
+                            <span class="font-semibold block"
+                                >24/7 Support:</span
+                            >
+                            <a href="tel:+1 (234) 567-8900">+1 (234) 567-8900</a
+                            >
+                        </span>
+                    </p>
+                    <p class="text-blue-200 flex items-center">
+                        <svg
+                            class="w-4 h-4 mr-2"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                        >
+                            <path
+                                d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+                            ></path>
+                            <path
+                                d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+                            ></path>
+                        </svg>
+                        <span class="block">
+                            <span class="font-semibold block">Email:</span>
+                            <a href="mailto:info@marineship.com"
+                                >info@marineship.com</a
+                            >
+                        </span>
+                    </p>
+
+                    <!-- Newsletter Form -->
+                    <div class="pt-4 border-t border-blue-800/50">
+                        <h4 class="text-white font-semibold mb-2">
+                            Newsletter
+                        </h4>
+                        <p class="text-blue-200 text-sm mb-3">
+                            Stay updated with our latest maritime news and
+                            services.
+                        </p>
+                        <form
+                            class="space-y-2 relative group"
+                            action="/api/newsletter"
+                            method="POST"
+                            onsubmit="this.querySelector('button').classList.add('loading')"
+                        >
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                required
+                                class="w-full px-4 py-2 rounded-lg bg-blue-800/50 border border-blue-700 text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm transition-all duration-300 focus:shadow-lg"
+                            />
+                            <button
+                                type="submit"
+                                class="w-full bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-102 hover:shadow-lg relative overflow-hidden group"
+                            >
+                                <span
+                                    class="relative z-10 flex items-center justify-center gap-2"
+                                >
+                                    Subscribe
+                                    <svg
+                                        class="w-4 h-4 animate-pulse"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M13 5L20 12L13 19M4 12H20"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                    </svg>
+                                </span>
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-size-200 animate-gradient"
+                                >
+                                </div>
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Bottom Bar -->
-        <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
-            <p>&copy; {currentYear} Marine Ship Industries. All rights reserved.</p>
+        <!-- Bottom Bar - Updated styling -->
+        <div class="mt-16 pt-8 border-t border-blue-800/50">
+            <div
+                class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
+            >
+                <p class="text-blue-200 text-sm">
+                    © {currentYear} MarineShip. All rights reserved.
+                </p>
+                <div class="flex space-x-8">
+                    {
+                        company.map((item) => (
+                            <a
+                                href={item.href}
+                                class="text-blue-200 hover:text-white text-sm transition-all duration-300 hover:underline"
+                            >
+                                {item.name}
+                            </a>
+                        ))
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </footer>
+
+<style>
+    @keyframes wave {
+        0% {
+            transform: translateX(0);
+        }
+        50% {
+            transform: translateX(-2%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+    .animate-wave {
+        animation: wave 5s ease-in-out infinite;
+    }
+    .loading::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.2),
+            transparent
+        );
+        animation: loading 1.5s infinite;
+    }
+    @keyframes loading {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+    @keyframes subtle-float {
+        0%,
+        100% {
+            transform: translateY(0) rotate(0);
+        }
+        50% {
+            transform: translateY(-10px) rotate(1deg);
+        }
+    }
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .animate-gradient {
+        animation: gradient 3s ease infinite;
+        background-size: 200% 200%;
+    }
+
+    .animate-subtle-float {
+        animation: subtle-float 6s ease-in-out infinite;
+    }
+
+    .scale-102 {
+        --tw-scale-x: 1.02;
+        --tw-scale-y: 1.02;
+    }
+</style>

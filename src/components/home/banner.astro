@@ -1,0 +1,250 @@
+---
+import { Image } from "astro:assets";
+import banner1 from "../../../public/home/banner1.jpg";
+import banner2 from "../../../public/home/banner2.jpg";
+import banner3 from "../../../public/home/banner3.jpg";
+import banner4 from "../../../public/home/banner4.jpg";
+
+const images = [
+  { src: banner1, alt: "Banner 1" },
+  { src: banner2, alt: "Banner 2" },
+  { src: banner3, alt: "Banner 3" },
+  { src: banner4, alt: "Banner 4" },
+];
+---
+
+<section class="relative min-h-[90vh] overflow-hidden">
+  <!-- Modern geometric background -->
+  <div
+    class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.8),rgba(255,255,255,1))]"
+  >
+  </div>
+
+  <!-- Modernized content layout -->
+  <div class="container mx-auto px-4 relative z-10 h-full flex items-center">
+    <div class="grid lg:grid-cols-2 gap-12 items-center py-16">
+      <!-- Text content -->
+      <div class="order-2 lg:order-1 space-y-8">
+        <h1 class="text-6xl lg:text-7xl font-bold leading-tight">
+          <span class="block text-[#344CB7]">Transform Your</span>
+          <span
+            class="bg-gradient-to-r from-[#344CB7] to-black text-transparent bg-clip-text"
+            >Digital Experience</span
+          >
+        </h1>
+
+        <p class="text-black text-xl leading-relaxed max-w-xl">
+          Experience innovation at its finest. Our platform combines
+          cutting-edge technology with intuitive design to deliver exceptional
+          results.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a
+            href="#get-started"
+            class="px-8 py-4 bg-[#344CB7] hover:bg-black text-white rounded-full
+                    font-medium transition-all hover:shadow-lg shadow-md hover:-translate-y-0.5"
+          >
+            Get Started
+          </a>
+        </div>
+      </div>
+
+      <!-- Image slider -->
+      <div class="order-1 lg:order-2">
+        <div
+          class="relative rounded-2xl overflow-hidden bg-gradient-to-r from-gray-900 to-black p-1"
+        >
+          <div
+            class="relative overflow-hidden rounded-xl aspect-[16/9]"
+            id="slider-container"
+          >
+            <!-- Loading skeleton -->
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-gray-900 to-gray-800 animate-pulse"
+              id="loading-skeleton"
+            >
+            </div>
+
+            <div
+              class="flex transition-transform duration-500 ease-out"
+              id="slider"
+            >
+              {
+                images.map((image, index) => (
+                  <div class="w-full flex-shrink-0">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      class="w-full h-full object-cover"
+                      width={1600}
+                      height={900}
+                      format="webp"
+                      quality={90}
+                      loading={index === 0 ? "eager" : "lazy"}
+                    />
+                  </div>
+                ))
+              }
+            </div>
+
+            <!-- Navigation buttons -->
+            <div class="absolute bottom-4 right-4 flex gap-2">
+              <button
+                class="p-2 rounded-full bg-black/50 backdrop-blur-sm hover:bg-black/70
+                       transition-all text-white"
+                id="prev-btn"
+                aria-label="Previous slide"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"></path>
+                </svg>
+              </button>
+              <button
+                class="p-2 rounded-full bg-black/50 backdrop-blur-sm hover:bg-black/70
+                       transition-all text-white"
+                id="next-btn"
+                aria-label="Next slide"
+              >
+                <svg
+                  class="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"></path>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Progress indicators -->
+            <div class="absolute bottom-4 left-4 flex gap-1.5">
+              {
+                images.map((_, index) => (
+                  <button
+                    class="w-12 h-1 rounded-full bg-white/30 hover:bg-white/50 
+                         transition-all dot-btn"
+                    data-index={index}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const slider = document.getElementById("slider");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const dotBtns = document.querySelectorAll(".dot-btn");
+    const slidesCount = dotBtns.length;
+    let currentSlide = 0;
+
+    // Hide loading skeleton when first image loads
+    const firstImage = slider?.querySelector("img");
+    if (firstImage) {
+      firstImage.onload = () => {
+        const skeleton = document.getElementById("loading-skeleton");
+        if (skeleton) skeleton.style.display = "none";
+      };
+    }
+
+    // Function to update slide position
+    const updateSlide = (index: number) => {
+      if (slider) {
+        slider.style.transform = `translateX(-${index * 100}%)`;
+      }
+      dotBtns.forEach((dot, i) => {
+        dot.classList.toggle("active", i === index);
+      });
+      currentSlide = index;
+    };
+
+    // Initialize first dot as active
+    updateSlide(0);
+
+    // Next button click handler
+    if (nextBtn) {
+      nextBtn.addEventListener("click", () => {
+        const next = (currentSlide + 1) % slidesCount;
+        updateSlide(next);
+      });
+    }
+
+    // Previous button click handler
+    if (prevBtn) {
+      prevBtn.addEventListener("click", () => {
+        const prev = (currentSlide - 1 + slidesCount) % slidesCount;
+        updateSlide(prev);
+      });
+    }
+
+    // Dot buttons click handlers
+    dotBtns.forEach((dot, index) => {
+      dot.addEventListener("click", () => updateSlide(index));
+    });
+
+    // Auto-advance slides every 5 seconds
+    setInterval(() => {
+      const next = (currentSlide + 1) % slidesCount;
+      updateSlide(next);
+    }, 5000);
+  });
+</script>
+
+<style>
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 0.8;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Active state for progress bars */
+  .dot-btn.active {
+    @apply bg-white;
+  }
+
+  /* Prevent text selection during swipe */
+  #slider-container {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  #slider {
+    display: flex;
+    transition: transform 0.5s ease-out;
+    width: 100%;
+  }
+
+  #slider > div {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+</style>

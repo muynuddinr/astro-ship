@@ -1,41 +1,84 @@
 ---
-import Navbar from '../components/navbar.astro';
-import Footer from '../components/footer.astro';
+// Add interface for type safety
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+// Destructure props with defaults
+const { title = "Astro Basics", description = "A basic Astro website" } =
+	Astro.props;
+
+import Navbar from "../components/navbar.astro";
+import Footer from "../components/footer.astro";
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-		<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+		<title>{title}</title>
+
+		<!-- Preload fonts for better performance -->
+		<link
+			rel="preload"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+			as="style"
+			onload="this.onload=null;this.rel='stylesheet'"
+		/>
+		<link
+			rel="preload"
+			href="https://unpkg.com/aos@next/dist/aos.css"
+			as="style"
+			onload="this.onload=null;this.rel='stylesheet'"
+		/>
+
 		<script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
 		<script is:inline>
-			document.addEventListener('DOMContentLoaded', () => {
+			document.addEventListener("DOMContentLoaded", () => {
 				AOS.init({
 					duration: 1000,
 					once: true,
-					easing: 'ease-out-cubic',
-					disable: 'mobile'
+					easing: "ease-out-cubic",
+					disable: window.innerWidth < 768 ? true : false,
 				});
 			});
 		</script>
 	</head>
 	<body>
 		<Navbar />
-		<slot />
+		<main>
+			<slot />
+		</main>
 		<Footer />
 	</body>
 </html>
 
-<style>
+<style is:global>
+	:root {
+		--max-width: 1440px;
+		--navbar-height: 60px;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
 	html,
 	body {
 		margin: 0;
+		padding: 0;
 		width: 100%;
-		height: 100%;
+		min-height: 100vh;
+	}
+
+	main {
+		max-width: var(--max-width);
+		margin: 0 auto;
+		padding: 0 1rem;
 	}
 </style>
