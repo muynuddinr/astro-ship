@@ -3,49 +3,67 @@
 interface Props {
 	title?: string;
 	description?: string;
+	// Add OpenGraph metadata support
+	ogImage?: string;
 }
 
-// Destructure props with defaults
-const { title = "Astro Basics", description = "A basic Astro website" } =
-	Astro.props;
+// Destructure props with improved defaults
+const {
+	title = "Astro Basics",
+	description = "A basic Astro website",
+	ogImage = "/default-og.png",
+} = Astro.props;
 
 import Navbar from "../components/navbar.astro";
 import Footer from "../components/footer.astro";
+
+// Add view transitions for smooth page navigation
+import { ViewTransitions } from "astro:transitions";
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		<!-- Enhanced metadata -->
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<meta name="theme-color" content="#ffffff" />
 
-		<!-- Preload fonts for better performance -->
+		<!-- OpenGraph and Twitter metadata -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={ogImage} />
+		<meta name="twitter:card" content="summary_large_image" />
+
+		<!-- Optimized font loading strategy -->
 		<link
 			rel="preload"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 			as="style"
+			crossorigin
 			onload="this.onload=null;this.rel='stylesheet'"
 		/>
-		<link
-			rel="preload"
-			href="https://unpkg.com/aos@next/dist/aos.css"
-			as="style"
-			onload="this.onload=null;this.rel='stylesheet'"
-		/>
+		<noscript>
+			<link
+				rel="stylesheet"
+				href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+			/>
+		</noscript>
 
-		<script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
+		<!-- Add view transitions -->
+		<ViewTransitions />
+
+		<!-- Optimized AOS initialization -->
 		<script is:inline>
 			document.addEventListener("DOMContentLoaded", () => {
-				AOS.init({
-					duration: 1000,
-					once: true,
-					easing: "ease-out-cubic",
-					disable: window.innerWidth < 768 ? true : false,
-				});
+				if (window.innerWidth >= 768) {
+					window.AOS?.init({
+						duration: 1000,
+						once: true,
+						easing: "ease-out-cubic",
+					});
+				}
 			});
 		</script>
 	</head>
@@ -62,23 +80,38 @@ import Footer from "../components/footer.astro";
 	:root {
 		--max-width: 1440px;
 		--navbar-height: 60px;
+
+		/* Add some useful CSS variables */
+		--content-padding: clamp(1rem, 5vw, 2rem);
+		--transition-speed: 0.3s ease;
 	}
 
+	/* Modern CSS reset additions */
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	/* Improve default styling */
 	html {
 		scroll-behavior: smooth;
+		text-size-adjust: 100%;
+		-webkit-text-size-adjust: 100%;
 	}
 
-	html,
-	body {
-		margin: 0;
-		padding: 0;
-		width: 100%;
-		min-height: 100vh;
-	}
-
+	/* Improve main content styling */
 	main {
 		max-width: var(--max-width);
 		margin: 0 auto;
-		padding: 0 1rem;
+		padding: 0 var(--content-padding);
+		width: 100%;
+	}
+
+	/* Add print styles */
+	@media print {
+		.no-print {
+			display: none !important;
+		}
 	}
 </style>

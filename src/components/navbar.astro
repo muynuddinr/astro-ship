@@ -3,14 +3,18 @@ const currentYear = new Date().getFullYear();
 ---
 
 <header class="font-satoshi">
-    <!-- Notification Bar -->
-    <div id="notification-bar" class="bg-[#344CB7] relative overflow-hidden">
+    <!-- Notification Bar - Enhanced with smoother animations -->
+    <div
+        id="notification-bar"
+        class="bg-[#344CB7] relative overflow-hidden transform transition-all duration-500"
+    >
         <div
             class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between"
         >
-            <p class="text-white text-sm font-medium">
+            <p class="text-white text-sm font-medium animate-fade-in">
                 🎉 Welcome to MarineShip! Experience the future of maritime
                 services.
+                <span class="hidden sm:inline">Get started today!</span>
             </p>
             <button
                 id="notification-dismiss"
@@ -24,26 +28,22 @@ const currentYear = new Date().getFullYear();
                 </svg>
             </button>
         </div>
-        <!-- Enhanced Animated Background with multiple layers -->
+        <!-- Enhanced animated background with better performance -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
             <div
-                class="animate-wave absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,0.5),transparent_65%)]"
+                class="animate-wave absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,0.7),transparent_65%)]"
             >
             </div>
             <div
-                class="animate-wave-delayed absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_150%,rgba(255,255,255,0.5),transparent_65%)]"
-            >
-            </div>
-            <div
-                class="animate-float absolute inset-0 opacity-20 bg-[linear-gradient(45deg,rgba(255,255,255,0.2)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.2)_50%,rgba(255,255,255,0.2)_75%,transparent_75%,transparent)]"
+                class="animate-wave-delayed absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_30%_150%,rgba(255,255,255,0.7),transparent_65%)]"
             >
             </div>
         </div>
     </div>
 
-    <!-- Main Navigation -->
+    <!-- Main Navigation - Enhanced with better transitions -->
     <nav
-        class="bg-white/60 backdrop-blur-xl sticky top-0 z-50 border-b border-gray-200/80 transition-all duration-300 transform"
+        class="bg-white/80 backdrop-blur-xl sticky top-0 z-50 border-b border-gray-200/80 transition-all duration-500 transform will-change-transform"
         id="main-nav"
     >
         <div class="max-w-7xl mx-auto">
@@ -63,7 +63,9 @@ const currentYear = new Date().getFullYear();
                         />
                     </div>
                     <div class="overflow-hidden">
-                        <h1 class="text-2xl sm:text-3xl font-bold text-[#344CB7]">
+                        <h1
+                            class="text-2xl sm:text-3xl font-bold text-[#344CB7]"
+                        >
                             Alcanza
                         </h1>
                         <p
@@ -74,13 +76,16 @@ const currentYear = new Date().getFullYear();
                     </div>
                 </a>
 
-                <!-- Desktop Navigation -->
-                <div class="hidden lg:flex lg:items-center lg:space-x-1">
+                <!-- Enhanced Desktop Navigation -->
+                <div class="hidden lg:flex lg:items-center lg:space-x-2">
                     <a href="/" class="nav-link group">
-                        <span
-                            class="group-hover:text-violet-600 transition-colors duration-300"
-                            >Home</span
-                        >
+                        <span class="relative overflow-hidden">
+                            <span class="nav-text">Home</span>
+                            <span
+                                class="nav-hover-text absolute left-0 -bottom-1 text-[#344CB7]"
+                                >Home</span
+                            >
+                        </span>
                         <span class="nav-indicator"></span>
                     </a>
                     <a href="/about" class="nav-link">
@@ -97,22 +102,17 @@ const currentYear = new Date().getFullYear();
                     </a>
                 </div>
 
-                <!-- Action Buttons -->
+                <!-- Enhanced Action Button -->
                 <div class="hidden lg:flex lg:items-center lg:space-x-4">
-                    <a href="/quote" class="btn-primary group">
-                        <span>Get Started</span>
-                        <svg
-                            class="ml-2 -mr-1 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
+                    <a
+                        href="/quote"
+                        class="btn-primary group relative overflow-hidden"
+                    >
+                        <span class="relative z-10">Get Started</span>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-r from-[#344CB7] to-[#4960d3] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
                         >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                        </svg>
+                        </div>
                     </a>
                 </div>
 
@@ -161,22 +161,33 @@ const currentYear = new Date().getFullYear();
     @import url("https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap");
 
     .nav-link {
-        @apply flex items-center px-4 py-2 text-black hover:text-[#344CB7] font-medium relative transition-all duration-300 hover:scale-105;
+        @apply flex items-center px-4 py-2 text-gray-800 font-medium relative transition-all duration-300 hover:scale-105 overflow-hidden;
+    }
+
+    .nav-text {
+        @apply transform transition-transform duration-300;
+    }
+
+    .nav-hover-text {
+        @apply transform translate-y-full transition-transform duration-300;
+    }
+
+    .nav-link:hover .nav-text {
+        @apply -translate-y-full;
+    }
+
+    .nav-link:hover .nav-hover-text {
+        @apply translate-y-0;
     }
 
     .nav-indicator {
-        @apply absolute -bottom-px left-0 right-0 h-0.5 bg-[#344CB7] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left;
-    }
-
-    .menu-item {
-        @apply flex items-center justify-between p-3 rounded-xl hover:bg-gray-50 transition-colors duration-200;
+        @apply absolute -bottom-px left-0 right-0 h-0.5 bg-[#344CB7] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left;
     }
 
     .btn-primary {
         @apply inline-flex items-center px-6 py-3 rounded-xl text-sm font-medium text-white 
-        bg-[#344CB7]
-        hover:bg-[#2a3d92]
-        transition-all duration-300 shadow-lg shadow-indigo-600/20 
+        bg-[#344CB7] relative
+        transition-all duration-500 shadow-lg shadow-indigo-600/20 
         hover:shadow-xl hover:shadow-indigo-600/30 
         hover:-translate-y-0.5 hover:scale-105 
         border border-white/20 backdrop-blur-sm;
@@ -211,26 +222,22 @@ const currentYear = new Date().getFullYear();
     }
 
     @keyframes wave {
-        0% {
+        0%,
+        100% {
             transform: translateY(0) rotate(0deg);
         }
         50% {
-            transform: translateY(-7%) rotate(3deg);
-        }
-        100% {
-            transform: translateY(0) rotate(0deg);
+            transform: translateY(-5%) rotate(2deg);
         }
     }
 
     @keyframes wave-delayed {
-        0% {
+        0%,
+        100% {
             transform: translateY(0) rotate(0deg);
         }
         50% {
-            transform: translateY(-10%) rotate(-3deg);
-        }
-        100% {
-            transform: translateY(0) rotate(0deg);
+            transform: translateY(-7%) rotate(-2deg);
         }
     }
 
@@ -247,11 +254,11 @@ const currentYear = new Date().getFullYear();
     }
 
     .animate-wave {
-        animation: wave 12s ease-in-out infinite;
+        animation: wave 15s ease-in-out infinite;
     }
 
     .animate-wave-delayed {
-        animation: wave-delayed 15s ease-in-out infinite;
+        animation: wave-delayed 18s ease-in-out infinite;
     }
 
     .animate-float {
@@ -309,6 +316,22 @@ const currentYear = new Date().getFullYear();
     .mobile-menu.active {
         max-height: 400px;
     }
+
+    /* Add new fade-in animation */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+    }
 </style>
 
 <script>
@@ -347,30 +370,40 @@ const currentYear = new Date().getFullYear();
         }
     });
 
-    // Replace existing scroll behavior with this enhanced version
+    // Enhanced scroll behavior with debouncing
     const nav = document.getElementById("main-nav");
     let lastScroll = 0;
-    const scrollThreshold = 80;
+    let scrollTimeout: number;
 
-    window.addEventListener("scroll", () => {
+    function debounce(func: Function, wait: number) {
+        let timeout: number;
+        return function executedFunction(...args: any[]) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    const handleScroll = debounce(() => {
         const currentScroll = window.pageYOffset;
+        const scrollDelta = currentScroll - lastScroll;
 
-        if (currentScroll <= scrollThreshold) {
+        if (currentScroll <= 0) {
             nav?.classList.remove("nav-scrolled", "nav-hidden");
-            return;
-        }
-
-        if (currentScroll > lastScroll) {
-            // Scrolling down
+        } else if (scrollDelta > 0 && currentScroll > 80) {
             nav?.classList.add("nav-scrolled", "nav-hidden");
-        } else {
-            // Scrolling up
+        } else if (scrollDelta < 0) {
             nav?.classList.add("nav-scrolled");
             nav?.classList.remove("nav-hidden");
         }
 
         lastScroll = currentScroll;
-    });
+    }, 10);
+
+    window.addEventListener("scroll", handleScroll);
 
     // Add mobile dropdown functionality
     const mobileDropdownButtons = document.querySelectorAll(

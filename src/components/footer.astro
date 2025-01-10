@@ -68,45 +68,42 @@ const social = [
 ];
 ---
 
-<footer class="bg-gradient-to-br from-blue-900 to-blue-950 relative">
-    <!-- Enhanced background pattern with parallax effect -->
+<footer
+    class="bg-gradient-to-br from-blue-900 to-blue-950 relative border-t-4 border-blue-600"
+>
+    <!-- Improved stable background pattern -->
     <div class="absolute inset-0 opacity-5">
         <div
-            class="absolute inset-0 bg-repeat bg-[url('/grid-pattern.svg')] motion-safe:animate-subtle-float"
+            class="absolute inset-0 bg-repeat bg-[length:50px_50px] bg-[url('/grid-pattern.svg')]"
         >
         </div>
     </div>
 
-    <!-- Enhanced wave animation -->
+    <!-- Simplified, more stable wave animation -->
     <div class="w-full relative overflow-hidden">
         <svg
-            class="w-full h-20 text-blue-900 motion-safe:animate-wave"
+            class="w-full h-16 text-blue-900"
             viewBox="0 0 1440 54"
             fill="white"
             preserveAspectRatio="none"
         >
-            <path d="M0,0 C480,54 960,54 1440,0 L1440,54 L0,54 Z">
-                <animate
-                    attributeName="d"
-                    dur="8s"
-                    repeatCount="indefinite"
-                    values="M0,0 C480,54 960,54 1440,0 L1440,54 L0,54 Z;
-                            M0,0 C480,35 960,70 1440,0 L1440,54 L0,54 Z;
-                            M0,0 C480,54 960,54 1440,0 L1440,54 L0,54 Z"
-                ></animate>
-            </path>
+            <path
+                d="M0,0 C480,54 960,54 1440,0 L1440,54 L0,54 Z"
+                class="motion-safe:animate-gentle-wave"></path>
         </svg>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
-        <!-- Main Footer Content -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-            <!-- Company Info - Updated styling -->
-            <div class="space-y-8">
+    <!-- Main content container with improved glass effect -->
+    <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 relative z-10"
+    >
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Company Info - Enhanced card -->
+            <div class="glass-card p-6 rounded-2xl space-y-6">
                 <img
                     src="/home/logo.jpg"
                     alt="MarineShip Logo"
-                    class="h-12 hover:opacity-90 transition-opacity transform hover:scale-105 duration-300"
+                    class="h-14 hover:opacity-90 transition-all duration-300 transform hover:scale-105"
                 />
                 <p
                     class="text-blue-100 text-sm leading-relaxed border-l-4 border-blue-600 pl-4"
@@ -141,10 +138,8 @@ const social = [
                 </div>
             </div>
 
-            <!-- Services - Updated styling -->
-            <div
-                class="backdrop-blur-sm bg-blue-900/10 p-6 rounded-xl hover:shadow-xl transition-all duration-300 hover:bg-blue-900/20"
-            >
+            <!-- Services - Enhanced card -->
+            <div class="glass-card p-6 rounded-2xl">
                 <h3
                     class="text-white font-bold mb-6 text-lg border-b border-blue-700 pb-2"
                 >
@@ -180,8 +175,8 @@ const social = [
                 </ul>
             </div>
 
-            <!-- Global Offices - Updated styling -->
-            <div class="backdrop-blur-sm bg-blue-900/10 p-6 rounded-xl">
+            <!-- Global Offices - Enhanced card -->
+            <div class="glass-card p-6 rounded-2xl">
                 <h3
                     class="text-white font-bold mb-6 text-lg border-b border-blue-700 pb-2"
                 >
@@ -233,8 +228,8 @@ const social = [
                 </div>
             </div>
 
-            <!-- Contact - Updated styling -->
-            <div class="backdrop-blur-sm bg-blue-900/10 p-6 rounded-xl">
+            <!-- Contact - Enhanced card with improved newsletter form -->
+            <div class="glass-card p-6 rounded-2xl">
                 <h3
                     class="text-white font-bold mb-6 text-lg border-b border-blue-700 pb-2"
                 >
@@ -280,54 +275,37 @@ const social = [
                         </span>
                     </p>
 
-                    <!-- Newsletter Form -->
-                    <div class="pt-4 border-t border-blue-800/50">
-                        <h4 class="text-white font-semibold mb-2">
-                            Newsletter
-                        </h4>
-                        <p class="text-blue-200 text-sm mb-3">
-                            Stay updated with our latest maritime news and
-                            services.
-                        </p>
+                    <!-- Enhanced Newsletter Form -->
+                    <div class="pt-4 border-t border-blue-800/30">
                         <form
-                            class="space-y-2 relative group"
+                            class="space-y-3"
                             action="/api/newsletter"
                             method="POST"
-                            onsubmit="this.querySelector('button').classList.add('loading')"
                         >
                             <input
                                 type="email"
                                 name="email"
                                 placeholder="Enter your email"
                                 required
-                                class="w-full px-4 py-2 rounded-lg bg-blue-800/50 border border-blue-700 text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm transition-all duration-300 focus:shadow-lg"
+                                class="w-full px-4 py-3 rounded-xl bg-white/5 border border-blue-700/50 text-white placeholder-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent backdrop-blur-sm transition-all duration-300"
                             />
                             <button
                                 type="submit"
-                                class="w-full bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-102 hover:shadow-lg relative overflow-hidden group"
+                                class="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white px-6 py-3 rounded-xl transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg flex items-center justify-center gap-2 font-medium"
                             >
-                                <span
-                                    class="relative z-10 flex items-center justify-center gap-2"
+                                Subscribe
+                                <svg
+                                    class="w-5 h-5"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
                                 >
-                                    Subscribe
-                                    <svg
-                                        class="w-4 h-4 animate-pulse"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                        <path
-                                            d="M13 5L20 12L13 19M4 12H20"
-                                            stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"></path>
-                                    </svg>
-                                </span>
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-size-200 animate-gradient"
-                                >
-                                </div>
+                                    <path
+                                        d="M13 5L20 12L13 19M4 12H20"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"></path>
+                                </svg>
                             </button>
                         </form>
                     </div>
@@ -335,8 +313,8 @@ const social = [
             </div>
         </div>
 
-        <!-- Bottom Bar - Updated styling -->
-        <div class="mt-16 pt-8 border-t border-blue-800/50">
+        <!-- Enhanced bottom bar -->
+        <div class="mt-16 pt-8 border-t border-blue-800/30">
             <div
                 class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
             >
@@ -361,74 +339,59 @@ const social = [
 </footer>
 
 <style>
-    @keyframes wave {
-        0% {
-            transform: translateX(0);
-        }
-        50% {
-            transform: translateX(-2%);
-        }
-        100% {
-            transform: translateX(0);
-        }
-    }
-    .animate-wave {
-        animation: wave 5s ease-in-out infinite;
-    }
-    .loading::after {
-        content: "";
-        position: absolute;
-        inset: 0;
+    /* Enhanced, more stable animations */
+    .glass-card {
         background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.2),
-            transparent
+            135deg,
+            rgba(255, 255, 255, 0.05) 0%,
+            rgba(255, 255, 255, 0.02) 100%
         );
-        animation: loading 1.5s infinite;
-    }
-    @keyframes loading {
-        0% {
-            transform: translateX(-100%);
-        }
-        100% {
-            transform: translateX(100%);
-        }
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease-in-out;
     }
 
-    @keyframes subtle-float {
+    .glass-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.2);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    @keyframes gentle-wave {
         0%,
         100% {
-            transform: translateY(0) rotate(0);
+            transform: translateX(0) translateY(0);
         }
         50% {
-            transform: translateY(-10px) rotate(1deg);
+            transform: translateX(-25px) translateY(2px);
         }
     }
 
-    @keyframes gradient {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
+    .animate-gentle-wave {
+        animation: gentle-wave 8s ease-in-out infinite;
     }
 
+    /* Remove previous animations that might cause instability */
+    .animate-wave,
+    .animate-subtle-float,
     .animate-gradient {
-        animation: gradient 3s ease infinite;
-        background-size: 200% 200%;
+        animation: none;
     }
 
-    .animate-subtle-float {
-        animation: subtle-float 6s ease-in-out infinite;
+    /* Add smooth transitions */
+    a,
+    button {
+        transition: all 0.3s ease-in-out;
     }
 
-    .scale-102 {
-        --tw-scale-x: 1.02;
-        --tw-scale-y: 1.02;
+    /* Improved focus states */
+    a:focus,
+    button:focus,
+    input:focus {
+        outline: none;
+        ring: 2px;
+        ring-color: rgb(59, 130, 246);
+        ring-offset: 2px;
     }
 </style>

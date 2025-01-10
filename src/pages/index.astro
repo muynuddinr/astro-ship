@@ -1,12 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Banner from "../components/home/banner.astro";
 import Home from "../components/home.astro";
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+
+// Add metadata for better SEO
+const pageTitle = "Welcome to AstroShip";
+const pageDescription = "Your trusted partner in marine supplies and equipment";
 ---
 
-<Layout>
-    <Banner />
+<Layout title={pageTitle} description={pageDescription}>
     <Home />
 </Layout>
