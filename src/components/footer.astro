@@ -17,52 +17,41 @@ const company = [
 
 const locations = [
     {
-        name: "Singapore",
-        address: "123 Maritime Way",
-        mapLink: "https://maps.google.com/?q=123+Maritime+Way+Singapore",
-        phone: "+65 1234 5678",
-        email: "info@marineship.com",
-    },
-    {
         name: "Dubai",
-        address: "456 Port Avenue",
-        mapLink: "https://maps.google.com/?q=456+Port+Avenue+Dubai",
-        phone: "+971 1234 5678",
-        email: "info@marineship.com",
-    },
-    {
-        name: "Rotterdam",
-        address: "789 Harbor Street",
-        mapLink: "https://maps.google.com/?q=789+Harbor+Street+Rotterdam",
-        phone: "+31 1234 5678",
-        email: "info@marineship.com",
+        address:
+            "Alcanza Ship Services, Mai Tower, Office 401-405, Al Nahda 1, Dubai, UAE",
+        mapLink:
+            "https://maps.google.com/?q=Alcanza+Ship+Services,+Mai+Tower,+Office+401-405,+Al+Nahda+1,+Dubai,+UAE",
+        phone: "+971 (56) 163 5323",
+        email: "operation@alcanzaship.com",
+        email2: "sales@alcanzaship.com",
     },
 ];
 
 const social = [
     {
         name: "Facebook",
-        href: "#",
+        href: "https://www.facebook.com/alcanzaship",
         icon: "facebook",
         hoverColor: "hover:text-[#1877F2]",
         hoverBg: "group-hover:bg-[#1877F2]/10",
     },
     {
         name: "Instagram",
-        href: "#",
+        href: "https://www.instagram.com/alcanzaship/",
         icon: "instagram",
         hoverColor: "hover:text-[#E4405F]",
     },
     {
         name: "LinkedIn",
-        href: "#",
+        href: "https://www.linkedin.com/company/alcanzaship/",
         icon: "linkedin",
         hoverColor: "hover:text-[#0A66C2]",
     },
     {
-        name: "Twitter",
-        href: "#",
-        icon: "twitter",
+        name: "X",
+        href: "https://x.com/alcanzaship",
+        icon: "x",
         hoverColor: "hover:text-[#1DA1F2]",
     },
 ];
@@ -99,7 +88,7 @@ const social = [
     >
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <!-- Company Info - Enhanced card -->
-            <div class="glass-card p-6 rounded-2xl space-y-6">
+            <div class="glass-card p-4 rounded-2xl space-y-4">
                 <img
                     src="/home/logo.jpg"
                     alt="MarineShip Logo"
@@ -108,15 +97,14 @@ const social = [
                 <p
                     class="text-blue-100 text-sm leading-relaxed border-l-4 border-blue-600 pl-4"
                 >
-                    Your trusted partner in maritime excellence. Delivering
-                    innovative solutions across the seven seas since 1980. With
-                    over 40 years of experience, we've established ourselves as
-                    a global leader in marine services, committed to safety,
-                    reliability, and sustainable maritime operations. Our
-                    worldwide network of experts ensures 24/7 support for your
-                    maritime needs.
+                    Alcanza Ship Services has 30 years of experience in ship
+                    supply and spare parts. We provide new-built stores to
+                    shipyards and technical stores to ports and the offshore oil
+                    & gas sector. Recently, we expanded to supply cruise liners,
+                    prioritizing the health and safety of seafarers on all
+                    vessels we serve.
                 </p>
-                <div class="flex space-x-6">
+                <div class="flex space-x-4">
                     {
                         social.map((item) => (
                             <a
@@ -180,7 +168,7 @@ const social = [
                 <h3
                     class="text-white font-bold mb-6 text-lg border-b border-blue-700 pb-2"
                 >
-                    Global Offices
+                    Our Locations
                 </h3>
                 <div class="space-y-6">
                     {
@@ -221,6 +209,12 @@ const social = [
                                     >
                                         {location.email}
                                     </a>
+                                    <a
+                                        href={`mailto:${location.email2}`}
+                                        class="text-sm block hover:text-white transition-colors"
+                                    >
+                                        {location.email2}
+                                    </a>
                                 </div>
                             </div>
                         ))
@@ -250,7 +244,8 @@ const social = [
                             <span class="font-semibold block"
                                 >24/7 Support:</span
                             >
-                            <a href="tel:+1 (234) 567-8900">+1 (234) 567-8900</a
+                            <a href="tel:+971 (56) 163 5323"
+                                >+971 (56) 163 5323</a
                             >
                         </span>
                     </p>
@@ -269,8 +264,11 @@ const social = [
                         </svg>
                         <span class="block">
                             <span class="font-semibold block">Email:</span>
-                            <a href="mailto:info@marineship.com"
-                                >info@marineship.com</a
+                            <a href="mailto:operation@alcanzaship.com"
+                                >operation@alcanzaship.com</a
+                            >
+                            <a href="mailto:sales@alcanzaship.com"
+                                >sales@alcanzaship.com</a
                             >
                         </span>
                     </p>

@@ -43,33 +43,33 @@ const currentYear = new Date().getFullYear();
 
     <!-- Main Navigation - Enhanced with better transitions -->
     <nav
-        class="bg-white/80 backdrop-blur-xl sticky top-0 z-50 border-b border-gray-200/80 transition-all duration-500 transform will-change-transform"
+        class="bg-white/80 backdrop-blur-xl sticky top-0 z-50 border-b border-gray-200/80 transition-all duration-500 transform will-change-transform h-[120px] sm:h-[100px]"
         id="main-nav"
     >
-        <div class="max-w-7xl mx-auto">
+        <div class="max-w-7xl mx-auto h-full">
             <div
-                class="flex items-center justify-between h-16 sm:h-20 px-4 sm:px-6 lg:px-8"
+                class="flex items-center justify-between h-full px-4 sm:px-6 lg:px-8"
             >
-                <!-- Logo - Updated for better mobile display -->
+                <!-- Logo - Increased size for mobile -->
                 <a
                     href="/"
-                    class="flex items-center space-x-3 sm:space-x-4 group"
+                    class="flex items-center space-x-2 sm:space-x-4 group"
                 >
-                    <div class="relative">
+                    <div class="relative flex-shrink-0">
                         <img
                             src="/home/logo.jpg"
                             alt="Alcanza ship services"
-                            class="relative h-12 w-12 sm:h-14 sm:w-14 transition-transform duration-300"
+                            class="relative h-24 w-24 sm:h-20 sm:w-20 transition-transform duration-300 object-contain"
                         />
                     </div>
-                    <div class="overflow-hidden">
+                    <div class="overflow-hidden flex-shrink-0">
                         <h1
-                            class="text-2xl sm:text-3xl font-bold text-[#344CB7]"
+                            class="text-5xl sm:text-5xl font-bold text-[#344CB7] leading-none"
                         >
                             Alcanza
                         </h1>
                         <p
-                            class="text-[0.8rem] sm:text-[0.85rem] font-medium tracking-widest text-gray-600 transform transition-transform group-hover:translate-x-2"
+                            class="text-lg sm:text-lg font-medium tracking-widest text-gray-600 transform transition-transform group-hover:translate-x-2"
                         >
                             Ship Services
                         </p>
@@ -141,13 +141,13 @@ const currentYear = new Date().getFullYear();
         <!-- Enhanced Mobile Menu -->
         <div class="hidden mobile-menu lg:hidden">
             <div
-                class="px-4 pt-2 pb-3 space-y-2 bg-white/90 backdrop-blur-xl border-t border-gray-200/80"
+                class="px-4 pt-3 pb-4 space-y-3 bg-white/90 backdrop-blur-xl border-t border-gray-200/80"
             >
                 <a href="/" class="mobile-link">Home</a>
                 <a href="/about" class="mobile-link">About</a>
                 <a href="/services" class="mobile-link">Services</a>
                 <a href="/contact" class="mobile-link">Contact</a>
-                <div class="grid gap-2 pt-4">
+                <div class="grid gap-3 pt-5">
                     <a href="/quote" class="mobile-btn-primary">
                         Get Started
                     </a>
@@ -161,7 +161,7 @@ const currentYear = new Date().getFullYear();
     @import url("https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap");
 
     .nav-link {
-        @apply flex items-center px-4 py-2 text-gray-800 font-medium relative transition-all duration-300 hover:scale-105 overflow-hidden;
+        @apply flex items-center px-5 py-3 text-lg text-gray-800 font-medium relative transition-all duration-300 hover:scale-105 overflow-hidden;
     }
 
     .nav-text {
@@ -185,7 +185,7 @@ const currentYear = new Date().getFullYear();
     }
 
     .btn-primary {
-        @apply inline-flex items-center px-6 py-3 rounded-xl text-sm font-medium text-white 
+        @apply inline-flex items-center px-7 py-4 rounded-xl text-base font-medium text-white 
         bg-[#344CB7] relative
         transition-all duration-500 shadow-lg shadow-indigo-600/20 
         hover:shadow-xl hover:shadow-indigo-600/30 
@@ -202,11 +202,11 @@ const currentYear = new Date().getFullYear();
     }
 
     .mobile-link {
-        @apply block px-3 py-2.5 rounded-xl text-base font-medium text-black hover:text-[#344CB7] hover:bg-[#344CB7]/10 transition-colors duration-200;
+        @apply block px-5 py-4 rounded-xl text-xl font-medium text-black hover:text-[#344CB7] hover:bg-[#344CB7]/10 transition-colors duration-200;
     }
 
     .mobile-btn-primary {
-        @apply block w-full text-center px-4 py-3 rounded-xl text-sm font-medium text-white 
+        @apply block w-full text-center px-6 py-5 rounded-xl text-lg font-medium text-white 
         bg-[#344CB7]
         hover:bg-[#2a3d92]
         transition-all duration-200 
