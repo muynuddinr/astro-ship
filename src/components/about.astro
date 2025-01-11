@@ -1,17 +1,6 @@
 ---
 const achievements = [
     {
-        year: "2023",
-        title: "Cruise Liner Division",
-        description: "Successful expansion into cruise liner supply services",
-    },
-    {
-        year: "2020",
-        title: "IMPA & ISSA Compliance",
-        description:
-            "Standardized supplies meeting international specifications",
-    },
-    {
         year: "2003",
         title: "Company Foundation",
         description: "Established ship chandling operations in UAE",
@@ -83,16 +72,6 @@ const expertise = [
             "Quality Control",
             "Competitive Pricing",
         ],
-    },
-];
-
-const qualityStandards = [
-    { name: "ISO 9001:2015", description: "Quality Management System" },
-    { name: "ISO 14001:2015", description: "Environmental Management" },
-    { name: "ISO 45001:2018", description: "Occupational Health and Safety" },
-    {
-        name: "IACS Member",
-        description: "International Association of Classification Societies",
     },
 ];
 
@@ -240,21 +219,21 @@ const innovationHighlights = [
                     }
                 </div>
             </div>
-            <div class="space-y-8">
-                <h3 class="text-2xl font-bold text-slate-900">
-                    Recent Achievements
+            <div class="space-y-10">
+                <h3 class="text-3xl sm:text-4xl font-bold text-slate-900">
+                    Our Achievements
                 </h3>
-                <div class="space-y-4">
+                <div class="space-y-6">
                     {
                         achievements.map((achievement) => (
-                            <div class="group hover:bg-[#344CB7]/10 transition-all duration-300 p-6 rounded-3xl border border-slate-100">
-                                <div class="text-sm text-blue-600 font-semibold mb-2">
+                            <div class="group hover:bg-[#344CB7]/10 transition-all duration-300 p-8 sm:p-10 rounded-3xl border border-slate-100">
+                                <div class="text-base sm:text-lg text-blue-600 font-semibold mb-3">
                                     {achievement.year}
                                 </div>
-                                <div class="text-lg font-medium text-slate-900 mb-1">
+                                <div class="text-xl sm:text-2xl font-medium text-slate-900 mb-2">
                                     {achievement.title}
                                 </div>
-                                <div class="text-slate-600">
+                                <div class="text-lg sm:text-xl text-slate-600">
                                     {achievement.description}
                                 </div>
                             </div>
@@ -272,7 +251,7 @@ const innovationHighlights = [
         <h2
             class="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-16 text-slate-900"
         >
-            Global Facilities & Capabilities
+            Our Facilities & Capabilities
         </h2>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {
@@ -313,9 +292,7 @@ const innovationHighlights = [
 
 <section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-center mb-16">
-            Technical Expertise
-        </h2>
+        <h2 class="text-3xl font-bold text-center mb-16">Our Expertise</h2>
         <div class="grid md:grid-cols-3 gap-8">
             {
                 expertise.map((area) => (
@@ -578,7 +555,7 @@ const innovationHighlights = [
 
 <style>
     /* Remove complex animations and simplify for better performance */
-    
+
     /* Base styles */
     .image-container {
         position: relative;
@@ -597,7 +574,9 @@ const innovationHighlights = [
 
     /* Simplified animations */
     @keyframes fadeIn {
-        to { opacity: 1; }
+        to {
+            opacity: 1;
+        }
     }
 
     .animate-fade {
@@ -614,7 +593,9 @@ const innovationHighlights = [
     /* Optimize transitions */
     .group {
         transform: translateZ(0);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease;
     }
 
     .group:hover {
