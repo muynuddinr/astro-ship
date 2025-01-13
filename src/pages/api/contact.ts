@@ -7,15 +7,23 @@ export const POST: APIRoute = async ({ request }) => {
         const userEmail = formData.get('email') as string;
         const userName = formData.get('name') as string;
 
+        // Create transporter based on environment
         const transporter = nodemailer.createTransport({
-            host: 'smtp.hostinger.com',
-            port: 465,
+            host: import.meta.env.EMAIL_HOST || 'smtp.hostinger.com',
+            port: parseInt(import.meta.env.EMAIL_PORT || '465'),
             secure: true,
             auth: {
                 user: import.meta.env.EMAIL_USER,
                 pass: import.meta.env.EMAIL_PASSWORD
+            },
+            tls: {
+                // This is important for some hosting providers
+                rejectUnauthorized: false
             }
         });
+
+        // Verify SMTP connection
+        await transporter.verify().catch(console.error);
 
         // Original email to you
         await transporter.sendMail({
@@ -118,15 +126,26 @@ export const POST: APIRoute = async ({ request }) => {
             JSON.stringify({
                 message: 'Email sent successfully'
             }),
-            { status: 200 }
+            { 
+                status: 200,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
         );
     } catch (error) {
         console.error('Error sending email:', error);
         return new Response(
             JSON.stringify({
-                message: 'Failed to send email'
+                message: 'Failed to send email',
+                error: error instanceof Error ? error.message : 'Unknown error'
             }),
-            { status: 500 }
+            { 
+                status: 500,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
         );
     }
 } 
