@@ -10,6 +10,7 @@
     "disable-toolbar": "astro preferences disable devToolbar"
   },
   "dependencies": {
+    "@astrojs/node": "^9.0.0",
     "@astrojs/react": "^4.1.2",
     "@astrojs/tailwind": "^5.1.4",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
