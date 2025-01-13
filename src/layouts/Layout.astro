@@ -19,6 +19,7 @@ import Footer from "../components/footer.astro";
 
 // Add view transitions for smooth page navigation
 import { ViewTransitions } from "astro:transitions";
+import Analytics from "@vercel/analytics/astro";
 ---
 
 <!doctype html>
@@ -73,6 +74,7 @@ import { ViewTransitions } from "astro:transitions";
 			<slot />
 		</main>
 		<Footer />
+		<Analytics />
 	</body>
 </html>
 
