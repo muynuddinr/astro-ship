@@ -14,5 +14,6 @@ export default defineConfig({
   },
   site: 'https://alcanzaship.com',
   output: 'server',
-  adapter: node({ mode: 'standalone' })
+  adapter: node({ mode: 'standalone' }),
+  base: '/',
 });
