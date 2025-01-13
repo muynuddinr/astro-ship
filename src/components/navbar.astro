@@ -317,10 +317,10 @@ const currentYear = new Date().getFullYear();
     // Enhanced scroll behavior with debouncing
     const nav = document.getElementById("main-nav");
     let lastScroll = 0;
-    let scrollTimeout: number;
+    let timeout: ReturnType<typeof setTimeout>;
 
     function debounce(func: Function, wait: number) {
-        let timeout: number;
+        let timeout: NodeJS.Timeout;
         return function executedFunction(...args: any[]) {
             const later = () => {
                 clearTimeout(timeout);

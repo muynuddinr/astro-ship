@@ -11,5 +11,6 @@ export default defineConfig({
       exclude: ['react-compiler-runtime']
     }
   },
-  site: 'https://alcanzaship.com'
+  site: 'https://alcanzaship.com',
+  output: 'server'
 });
