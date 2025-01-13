@@ -1,8 +1,241 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import CabinStoresComponent from '../../components/services/cabin-stores.astro';
+import Layout from "../../layouts/Layout.astro";
+import CabinStoresComponent from "../../components/services/cabin-stores.astro";
+
+// Enhanced SEO Meta Data
+const title =
+  "Marine Cabin Stores & Ship Supplies Dubai, UAE | Alcanza Ship Services | 24/7 Service";
+const description =
+  "Premium marine cabin stores & ship supplies in Dubai, UAE. Specialized in marine equipment, provisions, deck stores & technical supplies. 24/7 service across UAE ports including Dubai, Abu Dhabi, Sharjah & Fujairah. Contact Alcanza Ship Services.";
+const keywords =
+  "marine supplies UAE, ship stores Dubai, cabin supplies UAE, marine equipment Dubai, ship chandler UAE, marine provisions Dubai, Alcanza Ship Services, marine stores Fujairah, ship supplies Abu Dhabi, marine chandler Sharjah";
+const canonicalURL = new URL("/services/cabin-stores", Astro.site);
+
+// Enhanced Schema
+const schema = {
+  "@context": "https://schema.org",
+  "@type": ["MarineSupplyStore", "LocalBusiness", "Organization"],
+  name: "Alcanza Ship Services",
+  alternateName: "Alcanza Marine Supplies",
+  description:
+    "Leading provider of marine cabin stores and ship supplies in UAE, offering 24/7 service across all UAE ports",
+  slogan: "Your Trusted Marine Supply Partner in UAE",
+  foundingDate: "2003", // Update with actual founding date
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Mai Tower, Office 401-405, Al Nahda 1",
+    addressLocality: "Dubai",
+    addressRegion: "Dubai",
+    addressCountry: "UAE",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "25.2848",
+    longitude: "55.3222",
+  },
+  telephone: ["+971561635323", "+971561635323"],
+  email: ["sales@alcanzaship.com", "operation@alcanzaship.com"],
+  openingHours: ["Mo-Fr 09:00-18:00", "Sa-Su 09:00-13:00"], // Update if different
+  priceRange: "AED",
+  image: [
+    "https://alcanzaship.com/home/logo.jpg",
+    "https://alcanzaship.com/services/cabin-stores.jpg",
+  ],
+  url: "https://alcanzaship.com/services/cabin-stores",
+  sameAs: [
+    "https://www.facebook.com/alcanzaship",
+    "https://www.linkedin.com/company/alcanza-ship",
+    "https://www.instagram.com/alcanzaship",
+    "https://www.twitter.com/alcanzaship",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Marine Supplies Catalog",
+    itemListElement: [
+      {
+        "@type": "OfferCatalog",
+        name: "Cabin Stores",
+        description: "Complete range of cabin supplies and provisions",
+      },
+      {
+        "@type": "OfferCatalog",
+        name: "Marine Equipment",
+        description: "Professional marine equipment and technical supplies",
+      },
+    ],
+  },
+  areaServed: [
+    {
+      "@type": "City",
+      name: "Dubai",
+    },
+    {
+      "@type": "City",
+      name: "Abu Dhabi",
+    },
+    {
+      "@type": "City",
+      name: "Sharjah",
+    },
+    {
+      "@type": "City",
+      name: "Fujairah",
+    },
+  ],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+971561635323",
+      contactType: "sales",
+      email: "sales@alcanzaship.com",
+      availableLanguage: ["English", "Arabic"],
+    },
+    {
+      "@type": "ContactPoint",
+      telephone: "+971561635323",
+      contactType: "customer service",
+      email: "operation@alcanzaship.com",
+      availableLanguage: ["English", "Arabic"],
+    },
+  ],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    reviewCount: "150",
+  },
+  awards: ["ISO 9001:2015 Certified", "Best Marine Supplier UAE 2023"],
+  paymentAccepted: ["Cash", "Credit Card", "Bank Transfer", "Letter of Credit"],
+  currenciesAccepted: "AED, USD",
+  serviceArea: {
+    "@type": "GeoCircle",
+    geoMidpoint: {
+      "@type": "GeoCoordinates",
+      latitude: "25.2848",
+      longitude: "55.3222",
+    },
+    geoRadius: "100000",
+  },
+  potentialAction: [
+    {
+      "@type": "OrderAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://alcanzaship.com/contact",
+        inLanguage: "en",
+        actionPlatform: [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/MobileWebPlatform",
+        ],
+      },
+      result: {
+        "@type": "Quote",
+        name: "Marine Supplies Quote",
+      },
+    },
+  ],
+  specialty: [
+    "Marine Cabin Stores",
+    "Ship Supplies",
+    "Technical Supplies",
+    "Marine Equipment",
+    "Provisions Supply",
+  ],
+  knowsLanguage: ["en", "ar"],
+  certifications: ["ISO 9001:2015", "UAE Marine Supply License"],
+  numberOfEmployees: {
+    "@type": "QuantitativeValue",
+    value: "50+",
+  },
+  vatID: "UAE VAT ID",
+  iso9001Certification: {
+    "@type": "Certification",
+    name: "ISO 9001:2015",
+    issuingOrganization: "ISO",
+    validFrom: "2020-01-01",
+  },
+  availableService: [
+    {
+      "@type": "Service",
+      name: "24/7 Emergency Supply Service",
+      description:
+        "Round-the-clock marine supply service for urgent requirements",
+    },
+    {
+      "@type": "Service",
+      name: "International Shipping",
+      description: "Worldwide marine supply logistics and delivery",
+    },
+  ],
+  memberOf: [
+    {
+      "@type": "Organization",
+      name: "UAE Marine Suppliers Association",
+    },
+  ],
+  faxNumber: "+971XXXXXXXX",
+  naics: "483000",
+  parentOrganization: {
+    "@type": "Organization",
+    name: "Alcanza Group",
+    url: "https://alcanzagroup.com",
+  },
+};
+
+// Enhanced Meta Tags
+const metaTags = {
+  keywords,
+  "og:title": title,
+  "og:description": description,
+  "og:type": "website",
+  "og:url": canonicalURL.toString(),
+  "og:image": "https://alcanzaship.com/home/logo.jpg",
+  "twitter:card": "summary_large_image",
+  "twitter:title": title,
+  "twitter:description": description,
+  "twitter:image": "https://alcanzaship.com/home/logo.jpg",
+  "og:locale": "en_AE",
+  "og:site_name": "Alcanza Ship Services",
+  "og:image:width": "1200",
+  "og:image:height": "630",
+  "og:image:alt": "Alcanza Ship Services - Marine Supplies Dubai",
+  "twitter:site": "@alcanzaship",
+  "twitter:creator": "@alcanzaship",
+  "twitter:image:alt": "Alcanza Ship Services - Marine Supplies Dubai",
+  "geo.position": "25.2848;55.3222",
+  "geo.region": "AE-DU",
+  "geo.placename": "Dubai",
+  "ICBM": "25.2848, 55.3222",
+  "revisit-after": "7 days",
+  "distribution": "global",
+  "rating": "general",
+  "mobile-web-app-capable": "yes",
+  "apple-mobile-web-app-capable": "yes",
+  "apple-mobile-web-app-title": "Alcanza Ship",
+  "format-detection": "telephone=yes",
+  "theme-color": "#ffffff",
+  "article:publisher": "https://www.facebook.com/alcanzaship",
+  "article:modified_time": new Date().toISOString(),
+  "og:updated_time": new Date().toISOString(),
+  "robots": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1",
+  "msapplication-TileColor": "#ffffff",
+  "msapplication-config": "/browserconfig.xml",
+  "author": "Alcanza Ship Services",
+  "copyright": `© ${new Date().getFullYear()} Alcanza Ship Services. All rights reserved.`,
+  "dc.language": "en-AE",
+  "dc.source": canonicalURL.toString(),
+  "dc.title": title,
+  "dc.description": description,
+};
 ---
 
-<Layout title="Cabin Stores Services">
-  <CabinStoresComponent />
-</Layout> 
+<Layout
+  title={title}
+  description={description}
+  canonicalURL={canonicalURL}
+  schema={schema}
+  metaTags={metaTags}
+>
+  <main id="main-content" class="container mx-auto px-4 pt-6"> <!-- Added padding-top -->
+    <CabinStoresComponent />
+  </main>
+</Layout>

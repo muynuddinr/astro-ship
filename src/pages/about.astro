@@ -1,8 +1,194 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import AboutSection from '../components/about.astro';
+import Layout from "../layouts/Layout.astro";
+import AboutSection from "../components/about.astro";
+
+// Dynamic current date for schema
+const currentDate = new Date().toISOString();
+
+// Enhanced schema with additional UAE-specific details
+const schema = {
+    "@context": "https://schema.org",
+    "@type": "MarineBusinessService",
+    name: "Alcanza Ship Services",
+    alternateName: "Alcanza Ship",
+    description:
+        "Leading marine supplies and equipment provider in UAE, offering comprehensive ship services and marine solutions.",
+    foundingDate: "2003", // Add actual founding date
+    areaServed: [
+        {
+            "@type": "GeoCircle",
+            geoMidpoint: {
+                "@type": "GeoCoordinates",
+                latitude: "25.2848",
+                longitude: "55.3222",
+            },
+            geoRadius: "50000",
+        },
+    ],
+    contactPoint: [
+        {
+            "@type": "ContactPoint",
+            telephone: "+971561635323",
+            contactType: "sales",
+            email: "sales@alcanzaship.com",
+            availableLanguage: ["English", "Arabic"],
+        },
+        {
+            "@type": "ContactPoint",
+            telephone: "+971561635323",
+            contactType: "operations",
+            email: "operation@alcanzaship.com",
+            availableLanguage: ["English", "Arabic"],
+        },
+    ],
+    address: {
+        "@type": "PostalAddress",
+        streetAddress: "Mai Tower, Office 401-405, Al Nahda 1",
+        addressLocality: "Dubai",
+        addressCountry: "UAE",
+    },
+    geo: {
+        "@type": "GeoCoordinates",
+        latitude: "25.2848", // Replace with actual coordinates
+        longitude: "55.3222", // Replace with actual coordinates
+    },
+    telephone: "+971561635323",
+    email: ["sales@alcanzaship.com", "operation@alcanzaship.com"],
+    url: "https://alcanzaship.com", // Replace with actual URL
+    openingHours: "Mo-Fr 09:00-18:00", // Adjust as needed
+    priceRange: "AED 1000-10000",
+    dateModified: currentDate,
+    sameAs: [
+        "https://www.facebook.com/alcanzaship",
+        "https://www.linkedin.com/company/alcanzaship",
+        "https://www.instagram.com/alcanzaship",
+        "https://www.twitter.com/alcanzaship",
+    ],
+    hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Marine Services",
+        itemListElement: [
+            {
+                "@type": "Offer",
+                itemOffered: {
+                    "@type": "Service",
+                    name: "Marine Supplies",
+                    description: "Comprehensive marine supplies for vessels",
+                },
+            },
+            {
+                "@type": "Offer",
+                itemOffered: {
+                    "@type": "Service",
+                    name: "Ship Equipment",
+                    description: "Professional ship equipment services",
+                },
+            },
+        ],
+    },
+};
+
+// Add dynamic meta tags
+const metaTags = [
+    { name: "robots", content: "index, follow" },
+    { name: "author", content: "Alcanza Ship Services" },
+    { name: "geo.region", content: "AE-DU" },
+    { name: "geo.placename", content: "Dubai" },
+    { name: "geo.position", content: "25.2848;55.3222" },
+    { name: "ICBM", content: "25.2848, 55.3222" },
+    { name: "revisit-after", content: "7 days" },
+];
 ---
 
-<Layout title="About">
-    <AboutSection />
+<Layout
+    title="About | Alcanza Ship Services - Marine Supplies & Equipment in UAE"
+    description="Alcanza Ship Services - Your trusted partner for marine supplies and equipment in Dubai, UAE. Professional ship services and solutions."
+>
+    <!-- Meta tags for SEO -->
+    <meta
+        slot="head"
+        name="description"
+        content="Alcanza Ship Services - Your trusted partner for marine supplies and equipment in Dubai, UAE. Professional ship services and solutions."
+    />
+    <meta
+        slot="head"
+        name="keywords"
+        content="marine supplies UAE, ship equipment Dubai, marine services UAE, Alcanza Ship Services, maritime supplies Dubai"
+    />
+
+    <!-- Open Graph tags -->
+    <meta
+        slot="head"
+        property="og:title"
+        content="About Alcanza Ship Services | Marine Supplies in UAE"
+    />
+    <meta
+        slot="head"
+        property="og:description"
+        content="Leading provider of marine supplies and equipment in Dubai, UAE. Professional ship services and maritime solutions."
+    />
+    <meta slot="head" property="og:type" content="website" />
+    <meta slot="head" property="og:locale" content="en_AE" />
+
+    <!-- Twitter Card tags -->
+    <meta slot="head" name="twitter:card" content="summary_large_image" />
+    <meta
+        slot="head"
+        name="twitter:title"
+        content="About Alcanza Ship Services | Marine Supplies in UAE"
+    />
+    <meta
+        slot="head"
+        name="twitter:description"
+        content="Professional marine supplies and equipment provider in Dubai, UAE."
+    />
+
+    <!-- Canonical URL -->
+    <link slot="head" rel="canonical" href="https://alcanzaship.com/about" />
+
+    <!-- Schema.org JSON-LD -->
+    <script
+        slot="head"
+        type="application/ld+json"
+        set:html={JSON.stringify(schema)}
+    />
+
+    <!-- Additional meta tags -->
+    {
+        metaTags.map((meta) => (
+            <meta slot="head" name={meta.name} content={meta.content} />
+        ))
+    }
+
+    <!-- Language alternates -->
+    <link
+        slot="head"
+        rel="alternate"
+        hreflang="en"
+        href="https://alcanzaship.com/about"
+    />
+    <link
+        slot="head"
+        rel="alternate"
+        hreflang="ar"
+        href="https://alcanzaship.com/ar/about"
+    />
+
+    <!-- Favicon and mobile icons -->
+    <link slot="head" rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link
+        slot="head"
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/apple-touch-icon.png"
+    />
+
+    <!-- DNS prefetch for performance -->
+    <link slot="head" rel="dns-prefetch" href="//www.google-analytics.com" />
+    <link slot="head" rel="dns-prefetch" href="//www.googletagmanager.com" />
+
+    <!-- Main content with improved accessibility -->
+    <main role="main" id="main-content">
+        <AboutSection />
+    </main>
 </Layout>

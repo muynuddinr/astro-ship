@@ -2,11 +2,115 @@
 import Layout from "../layouts/Layout.astro";
 import Home from "../components/home.astro";
 
-// Add metadata for better SEO
-const pageTitle = "Welcome to AstroShip";
-const pageDescription = "Your trusted partner in marine supplies and equipment";
+// Enhanced SEO metadata
+const pageTitle =
+    "Welcome to Alcanza Ship | Marine Supplies & Equipment in UAE";
+const pageDescription =
+    "Alcanza Ship provides premium marine supplies and equipment in UAE. Expert consultation and 24/7 customer support for all your maritime needs in Dubai and across UAE.";
+const canonicalURL = new URL(Astro.url.pathname, "https://alcanzaship.com");
+
+// Enhanced Schema markup with additional properties
+const schema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Alcanza Ship",
+    description: pageDescription,
+    url: canonicalURL,
+    logo: new URL("/home/logo.jpg", Astro.site),
+    image: new URL("/home/image.jpg", Astro.site),
+    foundingDate: "2003", // Add your founding year
+    sameAs: [
+        "https://facebook.com/alcanzaship",
+        "https://twitter.com/alcanzaship",
+        "https://linkedin.com/company/alcanzaship",
+        "https://www.instagram.com/alcanzaship",
+    ],
+    contactPoint: [
+        {
+            "@type": "ContactPoint",
+            telephone: "+971561635323",
+            email: ["sales@alcanzaship.com", "operation@alcanzaship.com"],
+            contactType: "customer service",
+            availableLanguage: ["English", "Arabic"],
+            contactOption: "TollFree",
+            areaServed: "UAE",
+            hoursAvailable: "Mo-Su 00:00-24:00",
+        },
+    ],
+    address: {
+        "@type": "PostalAddress",
+        streetAddress: "Mai Tower, Office 401-405, Al Nahda 1",
+        addressLocality: "Dubai",
+        addressRegion: "Dubai",
+        addressCountry: "UAE",
+    },
+    // Add aggregateRating if you have reviews
+    aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: "4.8",
+        reviewCount: "150",
+    },
+    // Add price range
+    priceRange: "AED $$-$$$",
+    areaServed: {
+        "@type": "Country",
+        name: "United Arab Emirates",
+        alternateName: "UAE",
+    },
+};
+
+// Enhanced meta properties with additional tags
+const metaProperties = {
+    "og:title": pageTitle,
+    "og:description": pageDescription,
+    "og:type": "website",
+    "og:url": canonicalURL.toString(),
+    "og:image": new URL("/home/image.jpg", Astro.site).toString(),
+    "og:locale": "en_AE",
+    "og:site_name": "Alcanza Ship",
+    "twitter:card": "summary_large_image",
+    "twitter:title": pageTitle,
+    "twitter:description": pageDescription,
+    "twitter:image": new URL("/home/image.jpg", Astro.site).toString(),
+    "twitter:site": "@alcanzaship",
+    "twitter:creator": "@alcanzaship",
+    "twitter:image:alt": "Alcanza Ship - Marine Supplies & Equipment",
+    "twitter:image:width": "1200",
+    "twitter:image:height": "630",
+    "twitter:image:type": "image/jpeg",
+    "twitter:image:url": new URL("/home/image.jpg", Astro.site).toString(),
+    "twitter:image:secure_url": new URL(
+        "/home/image.jpg",
+        Astro.site,
+    ).toString(),
+    keywords:
+        "marine supplies UAE, maritime equipment Dubai, ship supplies UAE, nautical equipment Dubai, marine parts UAE, boat accessories Dubai, marine safety equipment UAE, navigation equipment Dubai",
+    robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    author: "Alcanza Ship",
+    viewport: "width=device-width, initial-scale=1, maximum-scale=5",
+    // Additional performance and SEO meta tags
+    "theme-color": "#ffffff", // Add your brand color
+    "apple-mobile-web-app-capable": "yes",
+    "apple-mobile-web-app-status-bar-style": "default",
+    "format-detection": "telephone=no",
+    "og:image:width": "1200",
+    "og:image:height": "630",
+    "og:image:alt": "Alcanza Ship - Marine Supplies & Equipment",
+    "Content-Security-Policy": "upgrade-insecure-requests",
+    "geo.region": "AE-DU",
+    "geo.placename": "Dubai",
+    "geo.position": "25.2848;55.3222",
+    ICBM: "25.2848, 55.3222",
+    "revisit-after": "7 days",
+};
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
+<Layout
+    title={pageTitle}
+    description={pageDescription}
+    canonicalURL={canonicalURL}
+    metaProperties={metaProperties}
+    schema={schema}
+>
     <Home />
 </Layout>

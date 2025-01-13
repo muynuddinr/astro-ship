@@ -10,5 +10,6 @@ export default defineConfig({
     optimizeDeps: {
       exclude: ['react-compiler-runtime']
     }
-  }
+  },
+  site: 'https://alcanzaship.com'
 });

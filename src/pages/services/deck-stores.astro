@@ -1,8 +1,193 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import DeckStoresComponent from '../../components/services/deck-stores.astro';
+import Layout from "../../layouts/Layout.astro";
+import DeckStoresComponent from "../../components/services/deck-stores.astro";
+
+const title = "Marine Supplies & Deck Store Equipment in Dubai | Alcanza Ship";
+const description =
+  "Professional marine supplies and deck store equipment in Dubai, UAE. Quality ship chandling services, marine equipment, and supplies with 24/7 support.";
+const canonicalURL = new URL("https://alcanzaship.com/services/deck-stores");
+const metaTags = {
+  keywords:
+    "marine supplies dubai, deck store equipment uae, ship chandling services, marine equipment dubai, ship supplies uae, marine store dubai",
+};
+
+// Additional meta tags
+const alternateURLs = {
+  "en-AE": "https://alcanzaship.com/services/deck-stores",
+};
+
+// Enhance schema with additional properties
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "MarineBusinessEstablishment",
+  name: "Alcanza Ship Services - Marine Supplies & Equipment",
+  description:
+    "Leading marine supplies and deck store equipment provider in UAE. Professional ship chandling services in Dubai with high-quality marine equipment and supplies.",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Mai Tower, Office 401-405, Al Nahda 1",
+    addressLocality: "Dubai",
+    addressRegion: "Dubai",
+    addressCountry: "UAE",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "25.2868",
+    longitude: "55.3377",
+  },
+  email: ["sales@alcanzaship.com", "operation@alcanzaship.com"],
+  telephone: "+971561635323",
+  openingHours: "Mo-Fr 09:00-18:00",
+  url: "https://alcanzaship.com/services/deck-stores",
+  sameAs: [
+    "https://www.linkedin.com/company/alcanzaship",
+    "https://www.instagram.com/alcanzaship",
+    "https://www.twitter.com/alcanzaship",
+    "https://www.facebook.com/alcanzaship",
+  ],
+  priceRange: "AED 100 - AED 1000",
+  areaServed: {
+    "@type": "GeoCircle",
+    geoMidpoint: {
+      "@type": "GeoCoordinates",
+      latitude: "25.2868",
+      longitude: "55.3377",
+    },
+    geoRadius: "100000",
+  },
+  image: ["https://alcanzaship.com/services/deck-stores.jpg"],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    reviewCount: "150",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+971561635323",
+    contactType: "sales",
+    availableLanguage: ["English", "Arabic"],
+  },
+  location: {
+    "@type": "Place",
+    name: "Mai Tower",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Mai Tower, Office 401-405, Al Nahda 1",
+      addressLocality: "Dubai",
+      addressRegion: "Dubai",
+      addressCountry: "UAE",
+    },
+  },
+};
 ---
 
-<Layout title="Deck Stores Services">
+<Layout
+  title={title}
+  description={description}
+  canonicalURL={canonicalURL}
+  schema={schema}
+  metaTags={metaTags}
+>
+  <!-- Meta tags for SEO -->
+  <meta slot="head" />
+  <meta
+    name="description"
+    content="Professional marine supplies and deck store equipment in Dubai, UAE. Quality ship chandling services, marine equipment, and supplies with 24/7 support."
+  />
+  <meta
+    name="keywords"
+    content="marine supplies dubai, deck store equipment uae, ship chandling services, marine equipment dubai, ship supplies uae, marine store dubai"
+  />
+
+  <!-- Open Graph / Social Media -->
+  <meta
+    property="og:title"
+    content="Marine Supplies & Deck Store Equipment in Dubai | Alcanza Ship"
+  />
+  <meta
+    property="og:description"
+    content="Professional marine supplies and deck store equipment in Dubai, UAE. Quality ship chandling services with 24/7 support."
+  />
+  <meta property="og:type" content="website" />
+  <meta
+    property="og:url"
+    content="https://alcanzaship.com/services/deck-stores"
+  />
+  <meta
+    property="og:image"
+    content="https://alcanzaship.com/services/deck-stores.jpg"
+  />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta
+    name="twitter:title"
+    content="Marine Supplies & Deck Store Equipment in Dubai | Alcanza Ship"
+  />
+  <meta
+    name="twitter:description"
+    content="Professional marine supplies and deck store equipment in Dubai, UAE. Quality ship chandling services with 24/7 support."
+  />
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://alcanzaship.com/services/deck-stores" />
+
+  <!-- Language and Region -->
+  <meta property="og:locale" content="en_AE" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <!-- Additional meta tags -->
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Alcanza Ship Services" />
+  <meta name="geo.region" content="AE-DU" />
+  <meta name="geo.placename" content="Dubai" />
+  <meta name="geo.position" content="25.2868;55.3377" />
+  <meta name="ICBM" content="25.2868, 55.3377" />
+
+  <!-- Local business structured data -->
+  <meta
+    name="business:contact_data:street_address"
+    content="Mai Tower, Office 401-405, Al Nahda 1"
+  />
+  <meta name="business:contact_data:locality" content="Dubai" />
+  <meta name="business:contact_data:country" content="UAE" />
+  <meta name="business:contact_data:email" content="sales@alcanzaship.com" />
+  <meta name="business:contact_data:phone_number" content="+971561635323" />
+
+  <!-- Rich Snippets for location -->
+  <meta itemprop="name" content="Alcanza Ship Services" />
+  <meta
+    itemprop="address"
+    content="Mai Tower, Office 401-405, Al Nahda 1, Dubai, UAE"
+  />
+  <meta itemprop="telephone" content="+971561635323" />
+
+  <!-- Additional local business tags -->
+  <meta name="place:location:latitude" content="25.2868" />
+  <meta name="place:location:longitude" content="55.3377" />
+  <meta name="business:contact_data:region" content="Dubai" />
+
+  <!-- Alternate language versions -->
+  {
+    Object.entries(alternateURLs).map(([lang, url]) => (
+      <link rel="alternate" hreflang={lang} href={url} />
+    ))
+  }
+
+  <!-- Favicon and Apple touch icons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+  <!-- Preconnect to important third-party domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://maps.googleapis.com" />
+
+  <!-- Mobile app meta tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="telephone=yes" />
+
   <DeckStoresComponent />
-</Layout> 
+</Layout>

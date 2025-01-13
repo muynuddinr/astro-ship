@@ -1,8 +1,255 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Contactsection from '../components/contact.astro';
+import Layout from "../layouts/Layout.astro";
+import Contactsection from "../components/contact.astro";
+
+// Enhanced SEO Meta Data
+const title = "Contact Alcanza Ship | Marine Supplies & Equipment in UAE";
+const description =
+    "Contact Alcanza Ship Services for marine supplies and equipment in Dubai, UAE. Visit our office in Mai Tower or reach us at +971 (56) 163 5323 for professional marine solutions.";
+const canonicalURL = new URL("contact", Astro.site);
+const imageUrl = new URL("/home/logo.jpg", Astro.site);
+
+const metaProperties = {
+    "og:title": title,
+    "og:description": description,
+    "og:url": canonicalURL.toString(),
+    "og:image": imageUrl.toString(),
+    "og:type": "website",
+    "twitter:card": "summary_large_image",
+    "twitter:title": title,
+    "twitter:description": description,
+    "twitter:image": imageUrl.toString(),
+};
+
+const schema = [
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "Alcanza Ship Services",
+        url: "https://alcanzaship.com",
+        logo: "https://alcanzaship.com/home/logo.jpg",
+        image: ["https://alcanzaship.com/home/logo.jpg"],
+        description:
+            "Leading marine supplies and equipment provider in Dubai, UAE",
+        contactPoint: [
+            {
+                "@type": "ContactPoint",
+                telephone: "+971561635323",
+                contactType: "sales",
+                email: "sales@alcanzaship.com",
+                areaServed: "AE",
+                availableLanguage: ["en", "ar"],
+            },
+            {
+                "@type": "ContactPoint",
+                telephone: "+971561635323",
+                contactType: "customer service",
+                email: "operation@alcanzaship.com",
+                areaServed: "AE",
+                availableLanguage: ["en", "ar"],
+            },
+        ],
+        address: {
+            "@type": "PostalAddress",
+            streetAddress: "Mai Tower, Office 401-405, Al Nahda 1",
+            addressLocality: "Dubai",
+            addressRegion: "Dubai",
+            addressCountry: "UAE",
+            postalCode: "00000",
+        },
+        sameAs: [
+            "https://www.linkedin.com/company/alcanzaship",
+            "https://www.facebook.com/alcanzaship",
+            "https://www.instagram.com/alcanzaship",
+            "https://www.twitter.com/alcanzaship",
+        ],
+        openingHoursSpecification: {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            opens: "09:00",
+            closes: "18:00",
+        },
+        areaServed: {
+            "@type": "GeoCircle",
+            geoMidpoint: {
+                "@type": "GeoCoordinates",
+                latitude: "25.2048",
+                longitude: "55.2708",
+            },
+            geoRadius: "50000",
+        },
+    },
+    {
+        "@context": "https://schema.org",
+        "@type": "MarineSupplyStore",
+        name: "Alcanza Ship Services",
+        image: "https://alcanzaship.com/logo.png",
+        priceRange: "$$",
+        currenciesAccepted: "AED, USD",
+        paymentAccepted: "Cash, Credit Card, Wire Transfer",
+        "@id": "https://alcanzaship.com",
+        url: "https://alcanzaship.com",
+        telephone: "+971561635323",
+        address: {
+            "@type": "PostalAddress",
+            streetAddress: "Mai Tower, Office 401-405, Al Nahda 1",
+            addressLocality: "Dubai",
+            addressRegion: "Dubai",
+            addressCountry: "UAE",
+            postalCode: "00000",
+        },
+        aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.8",
+            reviewCount: "150",
+        },
+    },
+];
 ---
 
-<Layout title="About">
-    <Contactsection/>
+<Layout
+    title={title}
+    description={description}
+    canonicalURL={canonicalURL}
+    metaProperties={metaProperties}
+    schema={schema}
+>
+    <!-- Additional Meta Tags -->
+    <meta slot="head" name="description" content={description} />
+    <meta
+        slot="head"
+        name="keywords"
+        content="marine supplies UAE, ship equipment Dubai, Alcanza Ship Services, marine equipment supplier Dubai, maritime services UAE"
+    />
+
+    <!-- Open Graph / Social Media -->
+    <meta slot="head" property="og:title" content={title} />
+    <meta slot="head" property="og:description" content={description} />
+    <meta slot="head" property="og:type" content="website" />
+    <meta slot="head" property="og:url" content={canonicalURL} />
+
+    <!-- Region Specific -->
+    <meta slot="head" name="geo.region" content="AE-DU" />
+    <meta slot="head" name="geo.placename" content="Dubai" />
+    <meta slot="head" name="geo.position" content="25.2048;55.2708" />
+    <meta slot="head" name="ICBM" content="25.2048, 55.2708" />
+    <link slot="head" rel="alternate" hreflang="en-ae" href={canonicalURL} />
+
+    <!-- Enhanced Meta Tags -->
+    <meta slot="head" name="robots" content="index, follow" />
+    <meta slot="head" name="author" content="Alcanza Ship Services" />
+    <meta slot="head" name="revisit-after" content="7 days" />
+    <meta slot="head" http-equiv="content-language" content="en-ae" />
+
+    <!-- Enhanced Social Media Tags -->
+    <meta slot="head" property="og:image" content={imageUrl} />
+    <meta
+        slot="head"
+        property="og:image:alt"
+        content="Alcanza Ship Services Office in Dubai"
+    />
+    <meta slot="head" property="og:locale" content="en_AE" />
+    <meta slot="head" property="og:site_name" content="Alcanza Ship Services" />
+
+    <!-- Twitter Card -->
+    <meta slot="head" name="twitter:card" content="summary_large_image" />
+    <meta slot="head" name="twitter:title" content={title} />
+    <meta slot="head" name="twitter:description" content={description} />
+    <meta slot="head" name="twitter:image" content={imageUrl} />
+
+    <!-- Enhanced Schema.org Markup -->
+    <script type="application/ld+json" slot="head">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Alcanza Ship Services",
+            "url": "https://alcanzaship.com",
+            "logo": "https://alcanzaship.com/home/logo.jpg",
+            "image": ["https://alcanzaship.com/home/logo.jpg"],
+            "description": "Leading marine supplies and equipment provider in Dubai, UAE",
+            "contactPoint": [
+                {
+                    "@type": "ContactPoint",
+                    "telephone": "+971561635323",
+                    "contactType": "sales",
+                    "email": "sales@alcanzaship.com",
+                    "areaServed": "AE",
+                    "availableLanguage": ["en", "ar"]
+                },
+                {
+                    "@type": "ContactPoint",
+                    "telephone": "+971561635323",
+                    "contactType": "customer service",
+                    "email": "operation@alcanzaship.com",
+                    "areaServed": "AE",
+                    "availableLanguage": ["en", "ar"]
+                }
+            ],
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Mai Tower, Office 401-405, Al Nahda 1",
+                "addressLocality": "Dubai",
+                "addressRegion": "Dubai",
+                "addressCountry": "UAE",
+                "postalCode": "00000"
+            },
+            "sameAs": [
+                "https://www.linkedin.com/company/alcanzaship",
+                "https://www.facebook.com/alcanzaship",
+                "https://www.instagram.com/alcanzaship",
+                "https://www.twitter.com/alcanzaship"
+            ],
+            "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday"
+                ],
+                "opens": "09:00",
+                "closes": "18:00"
+            },
+            "areaServed": {
+                "@type": "GeoCircle",
+                "geoMidpoint": {
+                    "@type": "GeoCoordinates",
+                    "latitude": "25.2048",
+                    "longitude": "55.2708"
+                },
+                "geoRadius": "50000"
+            }
+        }
+    </script>
+
+    <!-- Local Business Schema -->
+    <script type="application/ld+json" slot="head">
+        {
+            "@context": "https://schema.org",
+            "@type": "MarineSupplyStore",
+            "name": "Alcanza Ship Services",
+            "image": "https://alcanzaship.com/logo.png",
+            "priceRange": "AED",
+            "currenciesAccepted": "AED, USD",
+            "paymentAccepted": "Cash, Credit Card, Wire Transfer",
+            "@id": "https://alcanzaship.com",
+            "url": "https://alcanzaship.com",
+            "telephone": "+971561635323",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Mai Tower, Office 401-405, Al Nahda 1",
+                "addressLocality": "Dubai",
+                "addressRegion": "Dubai",
+                "addressCountry": "UAE",
+                "postalCode": "00000"
+            },
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5",
+                "reviewCount": "150"
+            }
+        }
+    </script>
+    <Contactsection />
 </Layout>

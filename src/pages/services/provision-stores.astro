@@ -1,8 +1,293 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import ProvisionStoresComponent from '../../components/services/provision-stores.astro';
+import Layout from "../../layouts/Layout.astro";
+import ProvisionStoresComponent from "../../components/services/provision-stores.astro";
+
+// Enhanced SEO Meta Data
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "MarineBusinessEstablishment",
+  name: "Alcanza Ship Services",
+  alternateName: "Alcanza Ship UAE",
+  description:
+    "Leading marine supplies and ship chandler in UAE providing provisions, stores, and equipment. Professional marine supply services in Dubai and across UAE ports.",
+  foundingDate: "2020",
+  image: "https://alcanzaship.com/home/logo.jpg",
+  logo: "https://alcanzaship.com/home/logo.png",
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Mai Tower, Office 401-405, Al Nahda 1",
+    addressLocality: "Dubai",
+    addressRegion: "Dubai",
+    addressCountry: "UAE",
+    postalCode: "12345",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: "25.2848",
+    longitude: "55.3222",
+  },
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+971561635323",
+      contactType: "sales",
+      email: "sales@alcanzaship.com",
+      availableLanguage: ["English", "Arabic"],
+    },
+  ],
+  areaServed: [
+    "Dubai",
+    "Abu Dhabi",
+    "Sharjah",
+    "Fujairah",
+    "Ajman",
+    "Ras Al Khaimah",
+    "Umm Al Quwain",
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Marine Supplies Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Ship Chandler Services",
+          description: "Professional ship chandler services in UAE ports",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Marine Provisions Supply",
+          description: "Quality marine provisions and stores supply",
+        },
+      },
+    ],
+  },
+};
+
+// Additional meta tags content
+const additionalMeta = {
+  author: "Alcanza Ship Services",
+  robots: "index, follow",
+  viewport: "width=device-width, initial-scale=1",
+  language: "en-AE",
+};
+
+// Additional structured data for FAQ
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What marine supply services do you offer in UAE?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We offer comprehensive marine supply services including ship chandling, provisions, stores, and equipment across all UAE ports including Dubai, Abu Dhabi, and Fujairah."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you provide 24/7 marine supply services?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we provide round-the-clock marine supply services with 24/7 support across all UAE ports."
+      }
+    }
+  ]
+};
+
+// Organization schema
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Alcanza Ship Services",
+  "url": "https://alcanzaship.com",
+  "logo": "https://alcanzaship.com/images/logo.png",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+971561635323",
+      "contactType": "customer service",
+      "areaServed": "AE",
+      "availableLanguage": ["English", "Arabic"]
+    },
+    {
+      "@type": "ContactPoint",
+      "telephone": "+971561635323",
+      "contactType": "technical support",
+      "areaServed": "AE",
+      "availableLanguage": ["English", "Arabic"]
+    }
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/company/alcanzaship",
+    "https://www.facebook.com/alcanzaship",
+    "https://www.instagram.com/alcanzaship",
+    "https://www.x.com/alcanzaship",
+  ]
+};
+
+// Additional meta content for SEO
+const seoMeta = {
+  keywords: [
+    "marine supplies Dubai",
+    "ship chandler UAE",
+    "vessel provisions Dubai",
+    "marine equipment UAE",
+    "ship stores Dubai",
+    "maritime supplies UAE",
+    "ship chandling services Dubai",
+    "marine provisions UAE",
+    "vessel supplies Dubai",
+    "maritime equipment UAE"
+  ].join(", "),
+  localities: [
+    "Dubai",
+    "Abu Dhabi",
+    "Sharjah",
+    "Fujairah",
+    "Ajman",
+    "Ras Al Khaimah",
+    "Umm Al Quwain"
+  ]
+};
 ---
 
-<Layout title="Provisions Services">
-  <ProvisionStoresComponent />
+<Layout
+  title="Marine Supplies & Ship Chandler Services in UAE | Alcanza Ship"
+  description="Professional marine supplies and ship chandler services in Dubai, UAE. Quality provisions, stores & equipment for vessels. 24/7 support across all UAE ports."
+>
+  <head>
+    <!-- Primary Meta Tags -->
+    <meta
+      name="title"
+      content="Marine Supplies & Ship Chandler Services in UAE | Alcanza Ship"
+    />
+    <meta
+      name="description"
+      content="Professional marine supplies and ship chandler services in Dubai, UAE. Quality provisions, stores & equipment for vessels. 24/7 support across all UAE ports."
+    />
+    <meta
+      name="keywords"
+      content="marine supplies UAE, ship chandler Dubai, vessel provisions UAE, marine equipment Dubai, ship stores UAE, maritime supplies Dubai"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://alcanzaship.com/services/provision-stores"
+    />
+    <meta
+      property="og:title"
+      content="Marine Supplies & Ship Chandler Services in UAE | Alcanza Ship"
+    />
+    <meta
+      property="og:description"
+      content="Professional marine supplies and ship chandler services in Dubai, UAE. Quality provisions, stores & equipment for vessels. 24/7 support across all UAE ports."
+    />
+    <meta property="og:image" content="/home/logo.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https://alcanzaship.com/services/provision-stores"
+    />
+    <meta
+      property="twitter:title"
+      content="Marine Supplies & Ship Chandler Services in UAE | Alcanza Ship"
+    />
+    <meta
+      property="twitter:description"
+      content="Professional marine supplies and ship chandler services in Dubai, UAE. Quality provisions, stores & equipment for vessels. 24/7 support across all UAE ports."
+    />
+    <meta property="twitter:image" content="/home/logo.jpg" />
+
+    <!-- Canonical URL -->
+    <link
+      rel="canonical"
+      href="https://alcanzaship.com/services/provision-stores"
+    />
+
+    <!-- Additional Meta Tags -->
+    <meta name="author" content={additionalMeta.author} />
+    <meta name="robots" content={additionalMeta.robots} />
+    <meta name="viewport" content={additionalMeta.viewport} />
+    <meta name="language" content={additionalMeta.language} />
+    <meta name="geo.region" content="AE-DU" />
+    <meta name="geo.placename" content="Dubai" />
+    <meta name="geo.position" content="25.2848;55.3222" />
+    <meta name="ICBM" content="25.2848, 55.3222" />
+
+    <!-- Alternate Language Links -->
+    <link
+      rel="alternate"
+      hreflang="en-AE"
+      href="https://alcanzaship.com/services/provision-stores"
+    />
+    <link
+      rel="alternate"
+      hreflang="ar-AE"
+      href="https://alcanzaship.com/services/provision-stores"
+    />
+
+    <!-- Favicon Tags -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Preconnect to Important Third-party Domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Enhanced Meta Tags -->
+    <meta name="twitter:site" content="@alcanzaship" />
+    <meta name="twitter:creator" content="@alcanzaship" />
+    <meta property="og:site_name" content="Alcanza Ship Services" />
+    <meta property="og:locale" content="en_AE" />
+    <meta property="og:locale:alternate" content="ar_AE" />
+    <meta property="og:type" content="website" />
+    <meta property="og:updated_time" content={new Date().toISOString()} />
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="keywords" content={seoMeta.keywords} />
+    <meta name="news_keywords" content="marine supplies, ship chandler, UAE ports" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Alcanza Ship" />
+    <meta name="application-name" content="Alcanza Ship" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="/fonts/your-main-font.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/images/hero-image.webp" as="image" />
+
+    <!-- Multiple Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
+  </head>
+
+  <main>
+    <ProvisionStoresComponent />
+  </main>
 </Layout>

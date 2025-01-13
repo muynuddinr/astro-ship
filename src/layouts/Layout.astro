@@ -1,17 +1,61 @@
 ---
 // Add interface for type safety
 interface Props {
-	title?: string;
-	description?: string;
-	// Add OpenGraph metadata support
-	ogImage?: string;
+	title: string;
+	description: string;
+	canonicalURL?: URL;
+	metaProperties?: Record<string, string>;
+	schema?: object;
+	metaTags?: Record<string, string>;
 }
 
 // Destructure props with improved defaults
 const {
-	title = "Astro Basics",
-	description = "A basic Astro website",
-	ogImage = "/default-og.png",
+	title = "Alcanza Ship | Marine Supplies & Equipment in UAE",
+	description = "Leading marine supplies and equipment provider in UAE. Professional ship chandling services, technical supplies, and marine equipment solutions in Dubai.",
+	canonicalURL,
+	metaProperties = {
+		"og:type": "website",
+		"og:site_name": "Alcanza Ship Services",
+		"og:locale": "en_AE",
+		"og:image": "/home/logo.jpg", // Update with your actual logo path
+		"og:image:alt": "Alcanza Ship Services Logo",
+		"twitter:creator": "@alcanzaship", // Update with your Twitter handle
+	},
+	schema = {
+		"@context": "https://schema.org",
+		"@type": "MarineBusinessEstablishment",
+		name: "Alcanza Ship Services",
+		image: "/home/logo.jpg", // Update with your actual logo path
+		"@id": "https://alcanzaship.com",
+		url: "https://alcanzaship.com",
+		telephone: "+971561635323",
+		address: {
+			"@type": "PostalAddress",
+			streetAddress: "Mai Tower, Office 401-405, Al Nahda 1",
+			addressLocality: "Dubai",
+			addressCountry: "AE",
+		},
+		geo: {
+			"@type": "GeoCoordinates",
+			latitude: "25.276987", // Actual coordinates for Dubai
+			longitude: "55.296249",
+		},
+		openingHoursSpecification: {
+			"@type": "OpeningHoursSpecification",
+			dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+			opens: "09:00",
+			closes: "18:00",
+		},
+		sameAs: [
+			"https://facebook.com/alcanzaship", // Update with your social media links
+			"https://linkedin.com/company/alcanzaship",
+			"https://twitter.com/alcanzaship",
+		],
+	},
+	metaTags = {
+		// Add any additional metaTags here
+	},
 } = Astro.props;
 
 import Navbar from "../components/navbar.astro";
@@ -24,7 +68,7 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr">
 	<head>
 		<meta charset="UTF-8" />
 		<!-- Enhanced metadata -->
@@ -35,7 +79,7 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 		<!-- OpenGraph and Twitter metadata -->
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content={ogImage} />
+		<meta property="og:image" content={metaProperties["og:image"]} />
 		<meta name="twitter:card" content="summary_large_image" />
 
 		<!-- Optimized font loading strategy -->
@@ -68,6 +112,74 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 				}
 			});
 		</script>
+
+		<link rel="canonical" href={canonicalURL} />
+		<title>{title}</title>
+
+		<!-- Open Graph / Twitter -->
+		{
+			Object.entries(metaProperties).map(([property, content]) => (
+				<meta property={property} content={content} />
+			))
+		}
+
+		<!-- Schema.org -->
+		{
+			schema && (
+				<script
+					type="application/ld+json"
+					set:html={JSON.stringify(schema)}
+				/>
+			)
+		}
+
+		<!-- Enhanced SEO meta tags -->
+		<meta name="author" content="Alcanza Ship Services" />
+		<meta name="robots" content="index, follow" />
+		<meta
+			name="keywords"
+			content="marine supplies dubai, ship chandling uae, marine equipment dubai, technical supplies uae, marine services dubai, ship supplies dubai"
+		/>
+		<meta name="geo.region" content="AE-DU" />
+		<meta name="geo.placename" content="Dubai" />
+		<meta name="geo.position" content="25.XXXXX;55.XXXXX" />
+		<!-- Add actual coordinates -->
+		<meta name="ICBM" content="25.XXXXX, 55.XXXXX" />
+		<!-- Add actual coordinates -->
+
+		<!-- Enhanced social media meta tags -->
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="en_AE" />
+		<meta property="og:site_name" content="Alcanza Ship Services" />
+		<meta
+			property="og:street-address"
+			content="Mai Tower, Office 401-405, Al Nahda 1"
+		/>
+		<meta property="og:locality" content="Dubai" />
+		<meta property="og:country-name" content="United Arab Emirates" />
+
+		<!-- Structured contact data -->
+		<link rel="author" href="mailto:sales@alcanzaship.com" />
+		<link rel="alternate" hreflang="en-ae" href={canonicalURL} />
+
+		<!-- Dynamic phone number -->
+		<meta
+			property="business:contact_data:phone_number"
+			content="+971561635323"
+		/>
+		<meta
+			property="business:contact_data:email"
+			content="sales@alcanzaship.com"
+		/>
+
+		<!-- Additional meta tags -->
+		{
+			Object.entries(metaTags).map(([name, content]) => (
+				name.startsWith('og:') ? 
+					<meta property={name} content={content} /> :
+					<meta name={name} content={content} />
+			))
+		}
 	</head>
 	<body>
 		<Navbar />
