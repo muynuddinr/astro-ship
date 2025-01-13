@@ -1,41 +1,5 @@
 import type { APIRoute } from 'astro';
 import nodemailer from 'nodemailer';
-import imapSimple from 'imap-simple';
-
-// IMAP configuration
-const imapConfig = {
-    imap: {
-        user: import.meta.env.EMAIL_USER,
-        password: import.meta.env.EMAIL_PASSWORD,
-        host: import.meta.env.EMAIL_HOST,
-        port: 993,
-        tls: true,
-        authTimeout: 3000,
-        tlsOptions: { rejectUnauthorized: false }
-    }
-};
-
-// Function to save email to sent folder
-async function saveEmailToSentFolder(emailContent: any) {
-    try {
-        const connection = await imapSimple.connect(imapConfig);
-        await connection.openBox('Sent');
-        
-        const message = {
-            ...emailContent,
-            flags: ['\\Seen']
-        };
-
-        await connection.append(message.html, {
-            mailbox: 'Sent',
-            flags: ['\\Seen']
-        });
-
-        await connection.end();
-    } catch (error) {
-        console.error('Error saving to sent folder:', error);
-    }
-}
 
 export const POST: APIRoute = async ({ request }) => {
     try {
@@ -73,36 +37,41 @@ export const POST: APIRoute = async ({ request }) => {
                 <html>
                 <head>
                     <style>
-                        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-                        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-                        .header { background-color: #003366; color: white; padding: 20px; text-align: center; }
-                        .content { padding: 20px; background-color: #f9f9f9; }
-                        .field { margin-bottom: 15px; }
-                        .label { font-weight: bold; color: #003366; }
-                        .message { white-space: pre-wrap; background-color: white; padding: 15px; border-left: 4px solid #003366; }
+                        body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; margin: 0; }
+                        .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; }
+                        .header { background: linear-gradient(135deg, #003366 0%, #0056b3 100%); color: white; padding: 30px; text-align: center; }
+                        .content { padding: 30px; background-color: #f9f9f9; }
+                        .field { margin-bottom: 20px; background: white; padding: 15px; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+                        .label { font-weight: bold; color: #003366; display: block; margin-bottom: 5px; }
+                        .value { color: #444; }
+                        .message-box { background: white; padding: 20px; border-left: 4px solid #003366; margin-top: 20px; border-radius: 5px; }
                     </style>
                 </head>
                 <body>
                     <div class="container">
                         <div class="header">
-                            <h2>New Contact Form Submission</h2>
+                            <h2 style="margin: 0;">New Contact Form Submission</h2>
                         </div>
                         <div class="content">
                             <div class="field">
-                                <span class="label">Name:</span> ${userName}
+                                <span class="label">Name</span>
+                                <span class="value">${userName}</span>
                             </div>
                             <div class="field">
-                                <span class="label">Email:</span> ${userEmail}
+                                <span class="label">Email</span>
+                                <span class="value">${userEmail}</span>
                             </div>
                             <div class="field">
-                                <span class="label">Phone:</span> ${userPhone}
+                                <span class="label">Phone</span>
+                                <span class="value">${userPhone}</span>
                             </div>
                             <div class="field">
-                                <span class="label">Subject:</span> ${userSubject}
+                                <span class="label">Subject</span>
+                                <span class="value">${userSubject}</span>
                             </div>
-                            <div class="field">
-                                <span class="label">Message:</span>
-                                <div class="message">${userMessage}</div>
+                            <div class="message-box">
+                                <span class="label">Message</span>
+                                <div class="value" style="white-space: pre-wrap;">${userMessage}</div>
                             </div>
                         </div>
                     </div>
@@ -111,7 +80,7 @@ export const POST: APIRoute = async ({ request }) => {
             `
         };
 
-        // Update user auto-reply template with the enhanced version
+        // User auto-reply email content
         const userEmailContent = {
             from: import.meta.env.EMAIL_USER,
             to: userEmail,
@@ -122,23 +91,69 @@ export const POST: APIRoute = async ({ request }) => {
                 <head>
                     <meta charset="utf-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>Thank you for your message</title>
+                    <style>
+                        body { margin: 0; padding: 0; font-family: 'Arial', sans-serif; line-height: 1.6; }
+                    </style>
                 </head>
-                <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; line-height: 1.6; background-color: #f6f9fc;">
-                    <div class="container">
-                        <div class="header">
-                            <h2>Thank You for Contacting Us</h2>
+                <body style="background-color: #f6f9fc;">
+                    <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+                        <div style="background-color: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                            <!-- Header -->
+                            <div style="background: linear-gradient(135deg, #003366 0%, #0056b3 100%); padding: 40px 20px; text-align: center;">
+                                <img src="https://alcanzaship.com/home/logo.jpg" alt="Alcanza Ship Services" style="max-width: 200px; height: auto;">
+                            </div>
+                            
+                            <!-- Content -->
+                            <div style="padding: 40px 30px;">
+                                <h2 style="color: #003366; margin: 0 0 20px;">Dear ${userName},</h2>
+                                
+                                <p style="color: #444; margin-bottom: 20px;">Thank you for reaching out to Alcanza Ship Services. We have received your inquiry and appreciate your interest in our services.</p>
+                                
+                                <p style="color: #444; margin-bottom: 30px;">Our team will carefully review your message and respond within 24-48 business hours.</p>
+                                
+                                <!-- Contact Info Box -->
+                                <div style="background-color: #f8fafc; border-radius: 8px; padding: 25px; margin: 30px 0;">
+                                    <h3 style="color: #003366; margin: 0 0 15px;">Need Immediate Assistance?</h3>
+                                    <div style="margin-bottom: 15px;">
+                                        <strong style="color: #003366;">📞 Phone:</strong><br>
+                                        <a href="tel:+971561635323" style="color: #0056b3; text-decoration: none;">+971 (56) 163 5323</a>
+                                    </div>
+                                    <div style="margin-bottom: 15px;">
+                                        <strong style="color: #003366;">📧 Email:</strong><br>
+                                        <a href="mailto:operation@alcanzaship.com" style="color: #0056b3; text-decoration: none;">operation@alcanzaship.com</a>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #003366;">📍 Address:</strong><br>
+                                        <span style="color: #444;">Mai Tower, Office 401-405, Al Nahda 1, Dubai, UAE</span>
+                                    </div>
+                                </div>
+                                
+                                <p style="color: #444; margin: 30px 0;">We look forward to serving your shipping needs.</p>
+                                
+                                <div style="margin-top: 30px; color: #444;">
+                                    Best Regards,<br>
+                                    <strong style="color: #003366;">Alcanza Ship Services Team</strong>
+                                </div>
+                            </div>
+                            
+                            <!-- Footer -->
+                            <div style="background-color: #f8fafc; padding: 20px; text-align: center; border-top: 1px solid #e2e8f0;">
+                                <p style="color: #666; font-size: 14px; margin-bottom: 15px;">Connect with us</p>
+                                <div style="margin-bottom: 20px;">
+                                    <a href="#" style="color: #0056b3; text-decoration: none; margin: 0 10px;">LinkedIn</a>
+                                    <a href="#" style="color: #0056b3; text-decoration: none; margin: 0 10px;">Twitter</a>
+                                    <a href="#" style="color: #0056b3; text-decoration: none; margin: 0 10px;">Facebook</a>
+                                    <a href="#" style="color: #0056b3; text-decoration: none; margin: 0 10px;">Instagram</a>
+                                </div>
+                                <p style="color: #999; font-size: 12px; margin: 0;">
+                                    This is an automated response. Please do not reply to this email.
+                                </p>
+                            </div>
                         </div>
-                        <div class="content">
-                            <p>Dear ${userName},</p>
-                            <div class="message">
-                                <p>Thank you for reaching out to Alcanza Ship Services. We have received your inquiry and our team will review it promptly.</p>
-                                <p>You can expect to hear back from us within 24-48 hours.</p>
-                            </div>
-                            <div class="signature">
-                                <p>Best regards,<br>
-                                <strong>Alcanza Ship Services Team</strong></p>
-                            </div>
+                        
+                        <!-- Copyright -->
+                        <div style="text-align: center; padding: 20px; color: #666; font-size: 12px;">
+                            <p style="margin: 0;">© ${new Date().getFullYear()} Alcanza Ship Services. All rights reserved.</p>
                         </div>
                     </div>
                 </body>
@@ -146,11 +161,9 @@ export const POST: APIRoute = async ({ request }) => {
             `
         };
 
-        // Send emails and save to sent folder
+        // Send emails
         await transporter.sendMail(adminEmailContent);
         await transporter.sendMail(userEmailContent);
-        await saveEmailToSentFolder(adminEmailContent);
-        await saveEmailToSentFolder(userEmailContent);
 
         return new Response(
             JSON.stringify({ message: 'Email sent successfully' }),
