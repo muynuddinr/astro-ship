@@ -2,61 +2,15 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<header class="font-satoshi">
-    <!-- Modern Notification Bar with Gradient -->
-    <div
-        id="notification-bar"
-        class="bg-gradient-to-r from-[#2563eb] via-[#344CB7] to-[#4f46e5] relative overflow-hidden transform transition-all duration-500"
-    >
-        <div
-            class="max-w-7xl mx-auto px-4 py-2.5 flex items-center justify-between"
-        >
-            <p
-                class="text-white/90 text-xs sm:text-sm font-medium animate-fade-in pr-4 flex items-center space-x-2"
-            >
-                <span
-                    class="inline-flex items-center justify-center bg-white/20 rounded-full w-6 h-6"
-                    >✨</span
-                >
-                <span
-                    >Welcome aboard! <span class="hidden xs:inline"
-                        >Experience premium maritime services</span
-                    ></span
-                >
-            </p>
-            <button
-                id="notification-dismiss"
-                class="text-white hover:text-white/80 transition-colors"
-            >
-                <span class="sr-only">Dismiss</span>
-                <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path
-                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                    ></path>
-                </svg>
-            </button>
-        </div>
-        <!-- Enhanced animated background with better performance -->
-        <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <div
-                class="animate-wave absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_50%_120%,rgba(255,255,255,0.7),transparent_65%)]"
-            >
-            </div>
-            <div
-                class="animate-wave-delayed absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_30%_150%,rgba(255,255,255,0.7),transparent_65%)]"
-            >
-            </div>
-        </div>
-    </div>
-
+<header class="font-satoshi pb-24">
     <!-- Modern Navigation with Glass Effect -->
     <nav
-        class="bg-white/70 backdrop-blur-lg sticky top-0 z-50 transition-all duration-300"
+        class="bg-white/50 backdrop-blur-sm fixed w-full top-0 z-50 transition-all duration-300 shadow-lg shadow-gray-300/50"
         id="main-nav"
     >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-32 sm:h-32 md:h-40">
-                <!-- Modern Logo Design -->
+            <div class="flex items-center justify-between h-20 sm:h-20 md:h-24">
+                <!-- Logo section -->
                 <a href="/" class="flex items-center space-x-3 group">
                     <div class="relative">
                         <div
@@ -66,7 +20,7 @@ const currentYear = new Date().getFullYear();
                         <img
                             src="/home/logo.jpg"
                             alt="Alcanza ship services"
-                            class="h-28 w-28 sm:h-28 sm:w-28 md:h-36 md:w-36 relative z-10 rounded-xl object-contain"
+                            class="h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 relative z-10 rounded-xl object-contain"
                         />
                     </div>
                 </a>
@@ -275,7 +229,7 @@ const currentYear = new Date().getFullYear();
 
     /* Add scroll behavior */
     .nav-scrolled {
-        @apply bg-white/90 shadow-lg shadow-gray-900/5;
+        @apply bg-white/95 backdrop-blur-xl shadow-xl shadow-gray-900/10;
     }
 
     /* Updated/Added Mobile Styles */
@@ -385,15 +339,11 @@ const currentYear = new Date().getFullYear();
 
     const handleScroll = debounce(() => {
         const currentScroll = window.pageYOffset;
-        const scrollDelta = currentScroll - lastScroll;
 
         if (currentScroll <= 0) {
-            nav?.classList.remove("nav-scrolled", "nav-hidden");
-        } else if (scrollDelta > 0 && currentScroll > 80) {
-            nav?.classList.add("nav-scrolled", "nav-hidden");
-        } else if (scrollDelta < 0) {
+            nav?.classList.remove("nav-scrolled");
+        } else {
             nav?.classList.add("nav-scrolled");
-            nav?.classList.remove("nav-hidden");
         }
 
         lastScroll = currentScroll;
