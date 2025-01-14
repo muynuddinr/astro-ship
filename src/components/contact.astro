@@ -118,15 +118,7 @@
                             required></textarea>
                     </div>
 
-                    <div
-                        id="formMessage"
-                        class="hidden text-center p-4 rounded-xl"
-                    >
-                        <!-- Status message will appear here -->
-                    </div>
-
                     <button
-                        type="submit"
                         class="w-full bg-gradient-to-r from-blue-600 via-purple-600 to-blue-700 text-white py-4 rounded-xl hover:from-blue-700 hover:via-purple-700 hover:to-blue-800 transition-all duration-300 shadow-soft hover:shadow-hover-soft transform hover:-translate-y-1 font-medium tracking-wide"
                     >
                         Send Message
@@ -257,74 +249,6 @@
         </div>
     </div>
 </section>
-
-<script>
-    const form = document.getElementById("contactForm") as HTMLFormElement;
-    if (!form) throw new Error("Contact form not found");
-    const formMessage = document.getElementById("formMessage");
-    if (!formMessage) throw new Error("Form message element not found");
-
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        // Show loading state
-        const submitButton = form.querySelector(
-            'button[type="submit"]',
-        ) as HTMLButtonElement;
-        if (!submitButton) throw new Error("Submit button not found");
-
-        const originalButtonText = submitButton.innerHTML;
-        submitButton.innerHTML = "Sending...";
-        submitButton.disabled = true;
-
-        // Collect form data
-        const formData = new FormData();
-        formData.append(
-            "name",
-            (form.elements.namedItem("name") as HTMLInputElement).value,
-        );
-        formData.append(
-            "email",
-            (form.elements.namedItem("email") as HTMLInputElement).value,
-        );
-        formData.append(
-            "phone",
-            (form.elements.namedItem("phone") as HTMLInputElement).value,
-        );
-        formData.append("subject", (form.subject as HTMLInputElement).value);
-        formData.append("message", (form.message as HTMLTextAreaElement).value);
-
-        try {
-            const response = await fetch("/api/contact", {
-                method: "POST",
-                body: formData,
-            });
-
-            const result = await response.json();
-
-            if (response.ok) {
-                // Show success message
-                formMessage.className =
-                    "block text-green-600 bg-green-50 p-4 rounded-xl";
-                formMessage.innerHTML =
-                    "Thank you! Your message has been sent successfully.";
-                form.reset();
-            } else {
-                throw new Error(result.message || "Something went wrong");
-            }
-        } catch (error) {
-            // Show error message
-            formMessage.className =
-                "block text-red-600 bg-red-50 p-4 rounded-xl";
-            formMessage.innerHTML =
-                "Sorry, there was an error sending your message. Please try again later.";
-        } finally {
-            // Restore button state
-            submitButton.innerHTML = originalButtonText;
-            submitButton.disabled = false;
-        }
-    });
-</script>
 
 <style>
     /* Base shadows */
