@@ -10,9 +10,9 @@ const schema = {
     "@context": "https://schema.org",
     "@type": "MarineBusinessService",
     name: "Alcanza Ship Services",
-    alternateName: "Alcanza Ship",
+    alternateName: ["Alcanza Ship", "Alcanza Ship Chandling Services"],
     description:
-        "Leading marine supplies and equipment provider in UAE, offering comprehensive ship services and marine solutions.",
+        "Leading ship chandling services provider in UAE, Saudi Arabia and GCC countries. Offering comprehensive ship chandling, marine supplies and equipment solutions across Dubai, Abu Dhabi, Fujairah, Jeddah, and Dammam ports.",
     foundingDate: "2003", // Add actual founding date
     areaServed: [
         {
@@ -66,8 +66,24 @@ const schema = {
     ],
     hasOfferCatalog: {
         "@type": "OfferCatalog",
-        name: "Marine Services",
+        name: "Ship Chandling Services",
         itemListElement: [
+            {
+                "@type": "Offer",
+                itemOffered: {
+                    "@type": "Service",
+                    name: "Ship Chandling Services UAE",
+                    description: "Professional ship chandling services across UAE ports including Dubai, Abu Dhabi, and Fujairah",
+                },
+            },
+            {
+                "@type": "Offer",
+                itemOffered: {
+                    "@type": "Service",
+                    name: "Ship Chandling Saudi Arabia",
+                    description: "Comprehensive ship chandling solutions in Saudi Arabian ports including Jeddah and Dammam",
+                },
+            },
             {
                 "@type": "Offer",
                 itemOffered: {
@@ -97,50 +113,55 @@ const metaTags = [
     { name: "geo.position", content: "25.2848;55.3222" },
     { name: "ICBM", content: "25.2848, 55.3222" },
     { name: "revisit-after", content: "7 days" },
+    { name: "keywords", content: "ship chandling services UAE, ship chandling services Dubai, ship chandling services Saudi Arabia, ship chandling Fujairah, ship chandling Abu Dhabi, marine supplies UAE, ship chandler Dubai, ship chandler Saudi Arabia" },
 ];
 ---
 
 <Layout
-    title="About | Alcanza Ship Services - Marine Supplies & Equipment in UAE"
-    description="Alcanza Ship Services - Your trusted partner for marine supplies and equipment in Dubai, UAE. Professional ship services and solutions."
+    title="About | Alcanza Ship Services - Leading Ship Chandling Services in UAE & Saudi Arabia"
+    description="Premier ship chandling services provider in UAE, Dubai, Saudi Arabia and GCC countries. Professional marine supplies and ship chandling solutions across major ports."
 >
     <!-- Meta tags for SEO -->
     <meta
         slot="head"
         name="description"
-        content="Alcanza Ship Services - Your trusted partner for marine supplies and equipment in Dubai, UAE. Professional ship services and solutions."
+        content="Premier ship chandling services provider in UAE, Dubai, Saudi Arabia and GCC countries. Professional marine supplies and ship chandling solutions across major ports including Dubai, Abu Dhabi, Fujairah, Jeddah, and Dammam."
     />
     <meta
         slot="head"
         name="keywords"
-        content="marine supplies UAE, ship equipment Dubai, marine services UAE, Alcanza Ship Services, maritime supplies Dubai"
+        content="ship chandling services UAE, ship chandling services Dubai, ship chandling services Saudi Arabia, ship chandling Fujairah, ship chandling Abu Dhabi, marine supplies UAE, ship chandler Dubai, ship chandler Saudi Arabia"
     />
 
     <!-- Open Graph tags -->
     <meta
         slot="head"
         property="og:title"
-        content="About Alcanza Ship Services | Marine Supplies in UAE"
+        content="About Alcanza Ship Services | Leading Ship Chandling Services in UAE & Saudi Arabia"
     />
     <meta
         slot="head"
         property="og:description"
-        content="Leading provider of marine supplies and equipment in Dubai, UAE. Professional ship services and maritime solutions."
+        content="Premier ship chandling services provider across UAE, Dubai, Saudi Arabia and GCC countries. Professional ship chandling and marine supply solutions."
     />
     <meta slot="head" property="og:type" content="website" />
     <meta slot="head" property="og:locale" content="en_AE" />
 
     <!-- Twitter Card tags -->
-    <meta slot="head" name="twitter:card" content="summary_large_image" />
+    <meta
+        slot="head"
+        name="twitter:card"
+        content="summary_large_image"
+    />
     <meta
         slot="head"
         name="twitter:title"
-        content="About Alcanza Ship Services | Marine Supplies in UAE"
+        content="About Alcanza Ship Services | Ship Chandling Services UAE & Saudi Arabia"
     />
     <meta
         slot="head"
         name="twitter:description"
-        content="Professional marine supplies and equipment provider in Dubai, UAE."
+        content="Professional ship chandling services provider across UAE, Dubai, Saudi Arabia and GCC ports."
     />
 
     <!-- Canonical URL -->

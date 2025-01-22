@@ -11,21 +11,23 @@ interface Props {
 
 // Destructure props with improved defaults
 const {
-	title = "Alcanza Ship | Marine Supplies & Equipment in UAE",
-	description = "Leading marine supplies and equipment provider in UAE. Professional ship chandling services, technical supplies, and marine equipment solutions in Dubai.",
+	title = "Alcanza Ship | Professional Ship Chandling Services in UAE & Saudi Arabia",
+	description = "Leading ship chandling services provider in UAE, Dubai & Saudi Arabia. Professional marine supplies, technical equipment, and comprehensive ship chandling solutions across GCC.",
 	canonicalURL,
 	metaProperties = {
 		"og:type": "website",
-		"og:site_name": "Alcanza Ship Services",
+		"og:site_name": "Alcanza Ship Chandling Services",
 		"og:locale": "en_AE",
 		"og:image": "/home/logo.jpg", // Update with your actual logo path
-		"og:image:alt": "Alcanza Ship Services Logo",
+		"og:image:alt": "Alcanza Ship Chandling Services Logo",
 		"twitter:creator": "@alcanzaship", // Update with your Twitter handle
 	},
 	schema = {
 		"@context": "https://schema.org",
 		"@type": "MarineBusinessEstablishment",
-		name: "Alcanza Ship Services",
+		name: "Alcanza Ship Chandling Services",
+		description:
+			"Professional ship chandling services in UAE, Dubai, Saudi Arabia and other GCC countries. Specialized in marine supplies and technical equipment.",
 		image: "/home/logo.jpg", // Update with your actual logo path
 		"@id": "https://alcanzaship.com",
 		url: "https://alcanzaship.com",
@@ -134,11 +136,11 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 		}
 
 		<!-- Enhanced SEO meta tags -->
-		<meta name="author" content="Alcanza Ship Services" />
+		<meta name="author" content="Alcanza Ship Chandling Services" />
 		<meta name="robots" content="index, follow" />
 		<meta
 			name="keywords"
-			content="marine supplies dubai, ship chandling uae, marine equipment dubai, technical supplies uae, marine services dubai, ship supplies dubai"
+			content="ship chandling services UAE, ship chandling services Dubai, ship chandling Saudi Arabia, marine supplies Dubai, ship chandlers UAE, ship supplies Dubai, ship chandling Abu Dhabi, ship chandling Sharjah, ship chandling Ajman, ship chandling Fujairah, marine equipment UAE"
 		/>
 		<meta name="geo.region" content="AE-DU" />
 		<meta name="geo.placename" content="Dubai" />
@@ -150,7 +152,10 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 		<!-- Enhanced social media meta tags -->
 		<meta property="og:type" content="website" />
 		<meta property="og:locale" content="en_AE" />
-		<meta property="og:site_name" content="Alcanza Ship Services" />
+		<meta
+			property="og:site_name"
+			content="Alcanza Ship Chandling Services"
+		/>
 		<meta
 			property="og:street-address"
 			content="Mai Tower, Office 401-405, Al Nahda 1"
@@ -174,12 +179,17 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 
 		<!-- Additional meta tags -->
 		{
-			Object.entries(metaTags).map(([name, content]) => (
-				name.startsWith('og:') ? 
-					<meta property={name} content={content} /> :
+			Object.entries(metaTags).map(([name, content]) =>
+				name.startsWith("og:") ? (
+					<meta property={name} content={content} />
+				) : (
 					<meta name={name} content={content} />
-			))
+				),
+			)
 		}
+
+		<!-- Add these favicon-related links -->
+		<link rel="icon" type="image/png" sizes="32x32" href="/home/logo.jpg" />
 	</head>
 	<body>
 		<Navbar />

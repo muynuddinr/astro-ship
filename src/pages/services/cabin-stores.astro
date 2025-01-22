@@ -4,17 +4,17 @@ import CabinStoresComponent from "../../components/services/cabin-stores.astro";
 
 // Enhanced SEO Meta Data
 const title =
-  "Marine Cabin Stores & Ship Supplies Dubai, UAE | Alcanza Ship Services | 24/7 Service";
+  "Ship Chandling Services Dubai, UAE & Saudi Arabia | Alcanza Ship Services | 24/7 Service";
 const description =
-  "Premium marine cabin stores & ship supplies in Dubai, UAE. Specialized in marine equipment, provisions, deck stores & technical supplies. 24/7 service across UAE ports including Dubai, Abu Dhabi, Sharjah & Fujairah. Contact Alcanza Ship Services.";
+  "Professional ship chandling services in Dubai, UAE & Saudi Arabia. Complete marine supplies, provisions & technical support. 24/7 ship chandler services across UAE ports - Dubai, Abu Dhabi, Sharjah & Fujairah. Contact Alcanza Ship Services.";
 const keywords =
-  "marine supplies UAE, ship stores Dubai, cabin supplies UAE, marine equipment Dubai, ship chandler UAE, marine provisions Dubai, Alcanza Ship Services, marine stores Fujairah, ship supplies Abu Dhabi, marine chandler Sharjah";
+  "ship chandling services UAE, ship chandling Dubai, ship chandler Saudi Arabia, marine supplies UAE, ship chandling Fujairah, ship chandling Abu Dhabi, ship chandling Sharjah, Alcanza Ship Services, marine provisions Dubai, ship stores UAE";
 const canonicalURL = new URL("/services/cabin-stores", Astro.site);
 
 // Enhanced Schema
 const schema = {
   "@context": "https://schema.org",
-  "@type": ["MarineSupplyStore", "LocalBusiness", "Organization"],
+  "@type": ["ShipChandler", "MarineSupplyStore", "LocalBusiness", "Organization"],
   name: "Alcanza Ship Services",
   alternateName: "Alcanza Marine Supplies",
   description:
@@ -134,8 +134,9 @@ const schema = {
     },
   ],
   specialty: [
-    "Marine Cabin Stores",
-    "Ship Supplies",
+    "Ship Chandling Services",
+    "Marine Supplies",
+    "Ship Stores Supply",
     "Technical Supplies",
     "Marine Equipment",
     "Provisions Supply",
@@ -156,14 +157,13 @@ const schema = {
   availableService: [
     {
       "@type": "Service",
-      name: "24/7 Emergency Supply Service",
-      description:
-        "Round-the-clock marine supply service for urgent requirements",
+      name: "24/7 Ship Chandling Service",
+      description: "Complete ship chandling and marine supply services available round-the-clock",
     },
     {
       "@type": "Service",
-      name: "International Shipping",
-      description: "Worldwide marine supply logistics and delivery",
+      name: "International Ship Chandling",
+      description: "Worldwide ship chandling and marine supply logistics across UAE and Saudi Arabia",
     },
   ],
   memberOf: [
