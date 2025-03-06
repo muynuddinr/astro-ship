@@ -1,4 +1,5 @@
 ---
+import GoogleAnalytics from "../components/GoogleAnalytics.astro";
 // Add interface for type safety
 interface Props {
 	title: string;
@@ -84,6 +85,7 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 		<meta property="og:image" content={metaProperties["og:image"]} />
 		<meta name="twitter:card" content="summary_large_image" />
 
+		<GoogleAnalytics />
 		<!-- Optimized font loading strategy -->
 		<link
 			rel="preload"
@@ -102,7 +104,7 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 		<!-- Add view transitions -->
 		<ViewTransitions />
 
-		<!-- Optimized AOS initialization -->
+	
 		<script is:inline>
 			document.addEventListener("DOMContentLoaded", () => {
 				if (window.innerWidth >= 768) {
