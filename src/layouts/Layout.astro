@@ -63,11 +63,9 @@ const {
 
 import Navbar from "../components/navbar.astro";
 import Footer from "../components/footer.astro";
-
-// Add view transitions for smooth page navigation
 import { ViewTransitions } from "astro:transitions";
-import Analytics from "@vercel/analytics/astro";
-import SpeedInsights from "@vercel/speed-insights/astro";
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/react";
 ---
 
 <!doctype html>
@@ -190,8 +188,14 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 			)
 		}
 
-		<!-- Add these favicon-related links -->
-		<link rel="icon" type="image/png" sizes="32x32" href="/home/logo.jpg" />
+		<!-- Favicon -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/home/logo.jpg">
+		<link rel="icon" type="image/png" sizes="32x32" href="/home/logo.jpg">
+		<link rel="icon" type="image/png" sizes="16x16" href="/home/logo.jpg">
+		<link rel="manifest" href="/site.webmanifest">
+		<link rel="mask-icon" href="/home/logo.jpg" color="#5bbad5">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="theme-color" content="#ffffff">
 	</head>
 	<body>
 		<Navbar />

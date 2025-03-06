@@ -1,0 +1,19 @@
+{
+    "name": "Alcanza Ship",
+    "short_name": "Alcanza",
+    "icons": [
+        {
+            "src": "/home/logo.jpg",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/home/logo.jpg",
+            "sizes": "16x16",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone"
+} 
